@@ -1,0 +1,117 @@
+C:\Users\Usuario\Documents\MATERIAS SEMESTRE 5\TALLER DE PROGRAMACION\PrestamixC\PrestamixC\bin\Debug\PrestamixC.exe.config
+C:\Users\Usuario\Documents\MATERIAS SEMESTRE 5\TALLER DE PROGRAMACION\PrestamixC\PrestamixC\bin\Debug\Database1.mdf
+C:\Users\Usuario\Documents\MATERIAS SEMESTRE 5\TALLER DE PROGRAMACION\PrestamixC\PrestamixC\bin\Debug\Database1_log.ldf
+C:\Users\Usuario\Documents\MATERIAS SEMESTRE 5\TALLER DE PROGRAMACION\PrestamixC\PrestamixC\bin\Debug\PrestamixC.exe
+C:\Users\Usuario\Documents\MATERIAS SEMESTRE 5\TALLER DE PROGRAMACION\PrestamixC\PrestamixC\bin\Debug\PrestamixC.pdb
+C:\Users\Usuario\Documents\MATERIAS SEMESTRE 5\TALLER DE PROGRAMACION\PrestamixC\PrestamixC\obj\Debug\PrestamixC.csprojResolveAssemblyReference.cache
+C:\Users\Usuario\Documents\MATERIAS SEMESTRE 5\TALLER DE PROGRAMACION\PrestamixC\PrestamixC\obj\Debug\MainWindow.baml
+C:\Users\Usuario\Documents\MATERIAS SEMESTRE 5\TALLER DE PROGRAMACION\PrestamixC\PrestamixC\obj\Debug\MainWindow.g.cs
+C:\Users\Usuario\Documents\MATERIAS SEMESTRE 5\TALLER DE PROGRAMACION\PrestamixC\PrestamixC\obj\Debug\App.g.cs
+C:\Users\Usuario\Documents\MATERIAS SEMESTRE 5\TALLER DE PROGRAMACION\PrestamixC\PrestamixC\obj\Debug\PrestamixC_Content.g.cs
+C:\Users\Usuario\Documents\MATERIAS SEMESTRE 5\TALLER DE PROGRAMACION\PrestamixC\PrestamixC\obj\Debug\PrestamixC_MarkupCompile.cache
+C:\Users\Usuario\Documents\MATERIAS SEMESTRE 5\TALLER DE PROGRAMACION\PrestamixC\PrestamixC\obj\Debug\PrestamixC.g.resources
+C:\Users\Usuario\Documents\MATERIAS SEMESTRE 5\TALLER DE PROGRAMACION\PrestamixC\PrestamixC\obj\Debug\PrestamixC.Properties.Resources.resources
+C:\Users\Usuario\Documents\MATERIAS SEMESTRE 5\TALLER DE PROGRAMACION\PrestamixC\PrestamixC\obj\Debug\PrestamixC.csproj.GenerateResource.Cache
+C:\Users\Usuario\Documents\MATERIAS SEMESTRE 5\TALLER DE PROGRAMACION\PrestamixC\PrestamixC\obj\Debug\PrestamixC.exe
+C:\Users\Usuario\Documents\MATERIAS SEMESTRE 5\TALLER DE PROGRAMACION\PrestamixC\PrestamixC\obj\Debug\PrestamixC.pdb
+C:\Users\Usuario\Documents\MATERIAS SEMESTRE 5\TALLER DE PROGRAMACION\PrestamixC\PrestamixC\obj\Debug\Empeño.baml
+C:\Users\Usuario\Documents\MATERIAS SEMESTRE 5\TALLER DE PROGRAMACION\PrestamixC\PrestamixC\obj\Debug\Empeño.g.cs
+C:\Users\DELL\Downloads\PrestamixC\PrestamixC\bin\Debug\PrestamixC.exe.config
+C:\Users\DELL\Downloads\PrestamixC\PrestamixC\obj\Debug\PrestamixC.exe
+C:\Users\DELL\Downloads\PrestamixC\PrestamixC\obj\Debug\PrestamixC.pdb
+C:\Users\DELL\Downloads\PrestamixC\PrestamixC\bin\Debug\Database1.mdf
+C:\Users\DELL\Downloads\PrestamixC\PrestamixC\bin\Debug\Database1_log.ldf
+C:\Users\DELL\Downloads\PrestamixC\PrestamixC\bin\Debug\PrestamixC.exe
+C:\Users\DELL\Downloads\PrestamixC\PrestamixC\bin\Debug\PrestamixC.pdb
+C:\Users\DELL\Downloads\PrestamixC\PrestamixC\obj\Debug\PrestamixC.csprojResolveAssemblyReference.cache
+C:\Users\DELL\Downloads\PrestamixC\PrestamixC\obj\Debug\Cliente.baml
+C:\Users\DELL\Downloads\PrestamixC\PrestamixC\obj\Debug\Empeño.baml
+C:\Users\DELL\Downloads\PrestamixC\PrestamixC\obj\Debug\MainWindow.baml
+C:\Users\DELL\Downloads\PrestamixC\PrestamixC\obj\Debug\Prenda.baml
+C:\Users\DELL\Downloads\PrestamixC\PrestamixC\obj\Debug\RegistrarEmpeño.baml
+C:\Users\DELL\Downloads\PrestamixC\PrestamixC\obj\Debug\Cliente.g.cs
+C:\Users\DELL\Downloads\PrestamixC\PrestamixC\obj\Debug\Empeño.g.cs
+C:\Users\DELL\Downloads\PrestamixC\PrestamixC\obj\Debug\MainWindow.g.cs
+C:\Users\DELL\Downloads\PrestamixC\PrestamixC\obj\Debug\Prenda.g.cs
+C:\Users\DELL\Downloads\PrestamixC\PrestamixC\obj\Debug\RegistrarEmpeño.g.cs
+C:\Users\DELL\Downloads\PrestamixC\PrestamixC\obj\Debug\App.g.cs
+C:\Users\DELL\Downloads\PrestamixC\PrestamixC\obj\Debug\PrestamixC_Content.g.cs
+C:\Users\DELL\Downloads\PrestamixC\PrestamixC\obj\Debug\PrestamixC_MarkupCompile.cache
+C:\Users\DELL\Downloads\PrestamixC\PrestamixC\obj\Debug\PrestamixC.g.resources
+C:\Users\DELL\Downloads\PrestamixC\PrestamixC\obj\Debug\PrestamixC.Properties.Resources.resources
+C:\Users\DELL\Downloads\PrestamixC\PrestamixC\obj\Debug\PrestamixC.csproj.GenerateResource.Cache
+C:\Users\DELL\Downloads\PrestamixCv2\PrestamixC\bin\Debug\PrestamixC.exe.config
+C:\Users\DELL\Downloads\PrestamixCv2\PrestamixC\obj\Debug\PrestamixC.exe
+C:\Users\DELL\Downloads\PrestamixCv2\PrestamixC\obj\Debug\PrestamixC.pdb
+C:\Users\DELL\Downloads\PrestamixCv2\PrestamixC\bin\Debug\Database1.mdf
+C:\Users\DELL\Downloads\PrestamixCv2\PrestamixC\bin\Debug\Database1_log.ldf
+C:\Users\DELL\Downloads\PrestamixCv2\PrestamixC\bin\Debug\PrestamixC.exe
+C:\Users\DELL\Downloads\PrestamixCv2\PrestamixC\bin\Debug\PrestamixC.pdb
+C:\Users\DELL\Downloads\PrestamixCv2\PrestamixC\obj\Debug\PrestamixC.csprojResolveAssemblyReference.cache
+C:\Users\DELL\Downloads\PrestamixCv2\PrestamixC\obj\Debug\Cliente.baml
+C:\Users\DELL\Downloads\PrestamixCv2\PrestamixC\obj\Debug\Empeño.baml
+C:\Users\DELL\Downloads\PrestamixCv2\PrestamixC\obj\Debug\MainWindow.baml
+C:\Users\DELL\Downloads\PrestamixCv2\PrestamixC\obj\Debug\Prenda.baml
+C:\Users\DELL\Downloads\PrestamixCv2\PrestamixC\obj\Debug\RegistrarEmpeño.baml
+C:\Users\DELL\Downloads\PrestamixCv2\PrestamixC\obj\Debug\Cliente.g.cs
+C:\Users\DELL\Downloads\PrestamixCv2\PrestamixC\obj\Debug\Empeño.g.cs
+C:\Users\DELL\Downloads\PrestamixCv2\PrestamixC\obj\Debug\MainWindow.g.cs
+C:\Users\DELL\Downloads\PrestamixCv2\PrestamixC\obj\Debug\Prenda.g.cs
+C:\Users\DELL\Downloads\PrestamixCv2\PrestamixC\obj\Debug\RegistrarEmpeño.g.cs
+C:\Users\DELL\Downloads\PrestamixCv2\PrestamixC\obj\Debug\App.g.cs
+C:\Users\DELL\Downloads\PrestamixCv2\PrestamixC\obj\Debug\PrestamixC_Content.g.cs
+C:\Users\DELL\Downloads\PrestamixCv2\PrestamixC\obj\Debug\PrestamixC_MarkupCompile.cache
+C:\Users\DELL\Downloads\PrestamixCv2\PrestamixC\obj\Debug\PrestamixC.g.resources
+C:\Users\DELL\Downloads\PrestamixCv2\PrestamixC\obj\Debug\PrestamixC.Properties.Resources.resources
+C:\Users\DELL\Downloads\PrestamixCv2\PrestamixC\obj\Debug\PrestamixC.csproj.GenerateResource.Cache
+C:\Users\Usuario\Desktop\PrestamixCv2.1\PrestamixCv2.1\PrestamixC\bin\Debug\PrestamixC.exe.config
+C:\Users\Usuario\Desktop\PrestamixCv2.1\PrestamixCv2.1\PrestamixC\obj\Debug\PrestamixC.exe
+C:\Users\Usuario\Desktop\PrestamixCv2.1\PrestamixCv2.1\PrestamixC\obj\Debug\PrestamixC.pdb
+C:\Users\Usuario\Desktop\PrestamixCv2.1\PrestamixCv2.1\PrestamixC\bin\Debug\Database1.mdf
+C:\Users\Usuario\Desktop\PrestamixCv2.1\PrestamixCv2.1\PrestamixC\bin\Debug\Database1_log.ldf
+C:\Users\Usuario\Desktop\PrestamixCv2.1\PrestamixCv2.1\PrestamixC\bin\Debug\PrestamixC.exe
+C:\Users\Usuario\Desktop\PrestamixCv2.1\PrestamixCv2.1\PrestamixC\bin\Debug\PrestamixC.pdb
+C:\Users\Usuario\Desktop\PrestamixCv2.1\PrestamixCv2.1\PrestamixC\obj\Debug\PrestamixC.csprojResolveAssemblyReference.cache
+C:\Users\Usuario\Desktop\PrestamixCv2.1\PrestamixCv2.1\PrestamixC\obj\Debug\Cliente.baml
+C:\Users\Usuario\Desktop\PrestamixCv2.1\PrestamixCv2.1\PrestamixC\obj\Debug\Empeño.baml
+C:\Users\Usuario\Desktop\PrestamixCv2.1\PrestamixCv2.1\PrestamixC\obj\Debug\MainWindow.baml
+C:\Users\Usuario\Desktop\PrestamixCv2.1\PrestamixCv2.1\PrestamixC\obj\Debug\Prenda.baml
+C:\Users\Usuario\Desktop\PrestamixCv2.1\PrestamixCv2.1\PrestamixC\obj\Debug\RegistrarEmpeño.baml
+C:\Users\Usuario\Desktop\PrestamixCv2.1\PrestamixCv2.1\PrestamixC\obj\Debug\Cliente.g.cs
+C:\Users\Usuario\Desktop\PrestamixCv2.1\PrestamixCv2.1\PrestamixC\obj\Debug\Empeño.g.cs
+C:\Users\Usuario\Desktop\PrestamixCv2.1\PrestamixCv2.1\PrestamixC\obj\Debug\MainWindow.g.cs
+C:\Users\Usuario\Desktop\PrestamixCv2.1\PrestamixCv2.1\PrestamixC\obj\Debug\Prenda.g.cs
+C:\Users\Usuario\Desktop\PrestamixCv2.1\PrestamixCv2.1\PrestamixC\obj\Debug\RegistrarEmpeño.g.cs
+C:\Users\Usuario\Desktop\PrestamixCv2.1\PrestamixCv2.1\PrestamixC\obj\Debug\App.g.cs
+C:\Users\Usuario\Desktop\PrestamixCv2.1\PrestamixCv2.1\PrestamixC\obj\Debug\PrestamixC_Content.g.cs
+C:\Users\Usuario\Desktop\PrestamixCv2.1\PrestamixCv2.1\PrestamixC\obj\Debug\PrestamixC_MarkupCompile.cache
+C:\Users\Usuario\Desktop\PrestamixCv2.1\PrestamixCv2.1\PrestamixC\obj\Debug\PrestamixC.g.resources
+C:\Users\Usuario\Desktop\PrestamixCv2.1\PrestamixCv2.1\PrestamixC\obj\Debug\PrestamixC.Properties.Resources.resources
+C:\Users\Usuario\Desktop\PrestamixCv2.1\PrestamixCv2.1\PrestamixC\obj\Debug\PrestamixC.csproj.GenerateResource.Cache
+G:\PrestamixCv2.1\PrestamixCv2.1\PrestamixC\bin\Debug\PrestamixC.exe.config
+G:\PrestamixCv2.1\PrestamixCv2.1\PrestamixC\obj\Debug\PrestamixC.exe
+G:\PrestamixCv2.1\PrestamixCv2.1\PrestamixC\obj\Debug\PrestamixC.pdb
+G:\PrestamixCv2.1\PrestamixCv2.1\PrestamixC\bin\Debug\PrestamixC.exe
+G:\PrestamixCv2.1\PrestamixCv2.1\PrestamixC\bin\Debug\PrestamixC.pdb
+G:\PrestamixCv2.1\PrestamixCv2.1\PrestamixC\obj\Debug\PrestamixC.csprojResolveAssemblyReference.cache
+G:\PrestamixCv2.1\PrestamixCv2.1\PrestamixC\obj\Debug\MainWindow.baml
+G:\PrestamixCv2.1\PrestamixCv2.1\PrestamixC\obj\Debug\RegistrarEmpeño.baml
+G:\PrestamixCv2.1\PrestamixCv2.1\PrestamixC\obj\Debug\MainWindow.g.cs
+G:\PrestamixCv2.1\PrestamixCv2.1\PrestamixC\obj\Debug\RegistrarEmpeño.g.cs
+G:\PrestamixCv2.1\PrestamixCv2.1\PrestamixC\obj\Debug\App.g.cs
+G:\PrestamixCv2.1\PrestamixCv2.1\PrestamixC\obj\Debug\PrestamixC_Content.g.cs
+G:\PrestamixCv2.1\PrestamixCv2.1\PrestamixC\obj\Debug\PrestamixC_MarkupCompile.cache
+G:\PrestamixCv2.1\PrestamixCv2.1\PrestamixC\obj\Debug\PrestamixC.g.resources
+G:\PrestamixCv2.1\PrestamixCv2.1\PrestamixC\obj\Debug\PrestamixC.Properties.Resources.resources
+G:\PrestamixCv2.1\PrestamixCv2.1\PrestamixC\obj\Debug\PrestamixC.csproj.GenerateResource.Cache
+G:\PrestamixCv2.1\PrestamixCv2.1\PrestamixC\obj\Debug\EditPawn.baml
+G:\PrestamixCv2.1\PrestamixCv2.1\PrestamixC\obj\Debug\EditPawn.g.cs
+G:\PrestamixCv2.1\PrestamixCv2.1\PrestamixC\bin\Debug\MahApps.Metro.dll
+G:\PrestamixCv2.1\PrestamixCv2.1\PrestamixC\bin\Debug\MaterialDesignColors.dll
+G:\PrestamixCv2.1\PrestamixCv2.1\PrestamixC\bin\Debug\MaterialDesignThemes.Wpf.dll
+G:\PrestamixCv2.1\PrestamixCv2.1\PrestamixC\bin\Debug\System.Windows.Interactivity.dll
+G:\PrestamixCv2.1\PrestamixCv2.1\PrestamixC\bin\Debug\MahApps.Metro.pdb
+G:\PrestamixCv2.1\PrestamixCv2.1\PrestamixC\bin\Debug\MahApps.Metro.xml
+G:\PrestamixCv2.1\PrestamixCv2.1\PrestamixC\obj\Debug\App.baml
+G:\PrestamixCv2.1\PrestamixCv2.1\PrestamixC\bin\Debug\DB\Database1.mdf
+G:\PrestamixCv2.1\PrestamixCv2.1\PrestamixC\bin\Debug\DB\Database1_log.ldf

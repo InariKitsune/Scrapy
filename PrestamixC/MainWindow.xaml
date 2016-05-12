@@ -1,0 +1,153 @@
+﻿<Controls:MetroWindow 
+    x:Class="PrestamixC.MainWindow" 
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:metro="http://metro.mahapps.com/winfx/xaml/controls"
+    xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+    Title="Scrapy" 
+    Height="608" 
+    Width="1019" 
+    Icon="img/scrapy.ico">
+    <Controls:MetroWindow.RightWindowCommands>
+        <Controls:WindowCommands>
+            <ComboBox x:Name="ThemeButton" IsReadOnly="True" SelectionChanged="themeSelector_SelectionChanged" Foreground="Black">
+                <ComboBoxItem Content="Red"/>
+                <ComboBoxItem Content="Green"/>
+                <ComboBoxItem Content="Blue"/>
+                <ComboBoxItem Content="Pink"/>
+                <ComboBoxItem Content="Yellow"/>
+                <ComboBoxItem Content="Purple"/>
+                <ComboBoxItem Content="Orange"/>
+                <ComboBoxItem Content="Brown"/>
+                <ComboBoxItem Content="Lime"/>
+                <ComboBoxItem Content="Teal" IsSelected="True"/>
+                <ComboBoxItem Content="Grey"/>
+                <ComboBoxItem Content="Indigo"/>
+                <ComboBoxItem Content="Cyan"/>
+                <ComboBoxItem Content="BlueGrey"/>
+                <ComboBoxItem Content="LightBlue"/>
+                <ComboBoxItem Content="LightGreen"/>
+                <ComboBoxItem Content="DeepOrange"/>
+                <ComboBoxItem Content="DeepPurple"/>
+            </ComboBox>
+        </Controls:WindowCommands>
+    </Controls:MetroWindow.RightWindowCommands>
+    <Grid Margin="10,0,13,10">
+        <TabControl Margin="10,10,81,10" Controls:TabControlHelper.IsUnderlined="True">
+            <TabItem x:Name="pawnsTab" Header="Empeños" Selector.Selected="pawnsTab_Selected" Margin="0,0,0,-4">
+                <Grid>
+                    <Button x:Name="BotonRegistrarEmpeños" Margin="0,45,103,0" VerticalAlignment="Top" Height="33" Click="BotonRegistrarEmpeños_Click" HorizontalAlignment="Right" Width="125">
+                        <DockPanel Width="99" Height="27">
+                            <Image x:Name="addImage" Source="img/addLight.png" Width="29"/>
+                            <TextBlock RenderTransformOrigin="0.476,0.48" Height="19" Width="56" Margin="0,4">
+                                Añadir
+                            </TextBlock>
+                        </DockPanel>
+                    </Button>
+                    <DataGrid x:Name="EmpeñosDataGrid" Margin="10,45,233,10" SelectionUnit="FullRow" SelectedItem="  " IsSynchronizedWithCurrentItem="True" IsReadOnly="True"/>
+                    <Button x:Name="DeleteButton" Margin="0,83,103,0" VerticalAlignment="Top" Height="33" Click="DeleteButton_Click" HorizontalAlignment="Right" Width="125">
+                        <DockPanel Width="98" Height="27">
+                            <Image x:Name="deleteImage" Source="img/closeLight.png" Width="30" RenderTransformOrigin="0.5,0.265" Margin="0,-6" />
+                            <TextBlock RenderTransformOrigin="0.476,0.48" Width="55" Margin="0,3,0,1">
+                                Eliminar
+                            </TextBlock>
+                        </DockPanel>
+                    </Button>
+                    <Button x:Name="EditSPawn" Margin="0,121,103,0" VerticalAlignment="Top" Height="33" RenderTransformOrigin="-1.16,2.091" Click="EditSPawn_Click" HorizontalAlignment="Right" Width="125">
+                        <DockPanel HorizontalAlignment="Right" Width="91" Height="23">
+                            <Image x:Name="editImage" Source="img/editLight.png" Width="29" Margin="0,-13"/>
+                            <TextBlock RenderTransformOrigin="0.476,0.48" Height="19" Margin="0,2" Width="49">
+                                Editar
+                            </TextBlock>
+                        </DockPanel>
+                    </Button>
+                    <ComboBox x:Name="pawnSearchCategory" Margin="10,10,0,0" VerticalAlignment="Top" Height="30" IsReadOnly="True" HorizontalAlignment="Left" Width="125">
+                        <ComboBoxItem Content="Número de empeño"/>
+                        <ComboBoxItem Content="CI del cliente"/>
+                        <ComboBoxItem Content="Número de prenda"/>
+                        <ComboBoxItem Content="Monto"/>
+                        <ComboBoxItem Content="Unidad monetaria"/>
+                        <ComboBoxItem Content="Fecha"/>
+                        <ComboBoxItem Content="Estado"/>
+                    </ComboBox>
+                    <TextBox x:Name="pawnSearchCriteria" Height="30" Margin="140,10,359,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top"/>
+                    <Button x:Name="pawnSearchButton" Margin="0,10,233,0" VerticalAlignment="Top" Height="30" HorizontalAlignment="Right" Width="121">
+                        <DockPanel Width="99" Height="27">
+                            <Image x:Name="searchImage" Source="img/searchLight.png" Width="32" Margin="0,-7,0,-3"/>
+                            <TextBlock RenderTransformOrigin="0.476,0.48" Width="56" Margin="0,0,0,4">
+                                Buscar
+                            </TextBlock>
+                        </DockPanel>
+                    </Button>
+                </Grid>
+            </TabItem>
+            <TabItem x:Name="pledgetab" Header="Prendas" Margin="-2,0,-2,-3" Selector.Selected="pledgetab_Selected">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="10*"/>
+                        <ColumnDefinition Width="899*"/>
+                    </Grid.ColumnDefinitions>
+                    <DataGrid x:Name="PrendasDataGrid" Margin="0,45,233,51" IsSynchronizedWithCurrentItem="True" IsReadOnly="True" Grid.Column="1"/>
+                    <Button x:Name="DeletePledge" Margin="0,45,103,0" VerticalAlignment="Top" Height="48" Click="DeletePledge_Click" Grid.Column="1" HorizontalAlignment="Right" Width="125">
+                        <DockPanel Width="98" Height="27">
+                            <Image x:Name="deleteImageP" Source="img/closeLight.png" Width="30" RenderTransformOrigin="0.5,0.265" Margin="0,-6" />
+                            <TextBlock RenderTransformOrigin="0.476,0.48" Width="55" Margin="0,3,0,1">
+                                Eliminar
+                            </TextBlock>
+                        </DockPanel>
+                    </Button>
+                    <ComboBox x:Name="pledgeSearchCaterogy" HorizontalAlignment="Left" Margin="0,10,0,0" VerticalAlignment="Top" Width="125" Height="30" Grid.Column="1" IsReadOnly="True">
+                        <ComboBoxItem Content="Número de prenda"/>
+                        <ComboBoxItem Content="Nombre de la prenda"/>
+                        <ComboBoxItem Content="Ubicación"/>
+                    </ComboBox>
+                    <TextBox x:Name="pledgeSearchCriteria" Height="30" Margin="130,10,359,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Grid.Column="1"/>
+                    <Button x:Name="pledgeSearchButton" Margin="0,10,233,0" VerticalAlignment="Top" Height="30" Grid.Column="1" HorizontalAlignment="Right" Width="121">
+                        <DockPanel Width="99" Height="27">
+                            <Image x:Name="searchImageP" Source="img/searchLight.png" Width="32" Margin="0,-7,0,-3"/>
+                            <TextBlock RenderTransformOrigin="0.476,0.48" Width="56" Margin="0,0,0,4">
+                                Buscar
+                            </TextBlock>
+                        </DockPanel>
+                    </Button>
+                </Grid>
+            </TabItem>
+            <TabItem x:Name="customersTab" Header="Clientes" Margin="-2,0,-2,-3" Selector.Selected="customersTab_Selected">
+                <Grid>
+                    <DataGrid x:Name="ClientesDataGrid" Margin="10,45,233,51" IsSynchronizedWithCurrentItem="True" IsReadOnly="True"/>
+                    <Button x:Name="DeleteCustomer" Margin="0,45,103,0" VerticalAlignment="Top" Height="43" Click="DeleteCustomer_Click" HorizontalAlignment="Right" Width="125">
+                        <DockPanel Width="98" Height="27">
+                            <Image x:Name="deleteImageC" Source="img/closeLight.png" Width="30" RenderTransformOrigin="0.5,0.265" Margin="0,-6" />
+                            <TextBlock RenderTransformOrigin="0.476,0.48" Width="55" Margin="0,3,0,1">
+                                Eliminar
+                            </TextBlock>
+                        </DockPanel>
+                    </Button>
+                    <ComboBox x:Name="customerSearchCategory" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="125" Height="30" IsReadOnly="True">
+                        <ComboBoxItem Content="CI del cliente"/>
+                        <ComboBoxItem Content="Nombre"/>
+                        <ComboBoxItem Content="Apellido paterno"/>
+                    </ComboBox>
+                    <TextBox x:Name="customerSearchCriteria" Height="30" Margin="140,10,359,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top"/>
+                    <Button x:Name="customerSearchButton" Margin="0,10,233,0" VerticalAlignment="Top" Height="30" HorizontalAlignment="Right" Width="121">
+                        <DockPanel Width="99" Height="27">
+                            <Image x:Name="searchImageC" Source="img/searchLight.png" Width="32" Margin="0,-7,0,-3"/>
+                            <TextBlock RenderTransformOrigin="0.476,0.48" Width="56" Margin="0,0,0,4">
+                                Buscar
+                            </TextBlock>
+                        </DockPanel>
+                    </Button>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Depósitos" Margin="-2,0,-2,-3" IsEnabled="False">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="0*"/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                </Grid>
+            </TabItem>
+        </TabControl>
+
+    </Grid>
+</Controls:MetroWindow>
