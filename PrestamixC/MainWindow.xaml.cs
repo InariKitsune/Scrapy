@@ -39,19 +39,19 @@ namespace PrestamixC
         void MostrarEmpeños()
         {
             DBAccess m_dba = new DBAccess();
-            DataTable m_dt = m_dba.SelectAllFromTable("Empenio");
+            DataTable m_dt = m_dba.SelectFromTable("Empenio", false, false, 0);
             EmpeñosDataGrid.ItemsSource = m_dt.DefaultView;         
         }
         private void MostrarClientes()
         {
-            DBAccess m_dba = new DBAccess();            
-            DataTable m_dt = m_dba.SelectAllFromTable("Cliente");
+            DBAccess m_dba = new DBAccess();
+            DataTable m_dt = m_dba.SelectFromTable("Cliente", false, false, 0);
             ClientesDataGrid.ItemsSource = m_dt.DefaultView;            
         }
         void MostrarPrendas()
         {
             DBAccess m_dba = new DBAccess();
-            DataTable m_dt = m_dba.SelectAllFromTable("Prenda");
+            DataTable m_dt = m_dba.SelectFromTable("Prenda", false, false, 0);
             PrendasDataGrid.ItemsSource = m_dt.DefaultView;         
         }
         //////////////////////////////////////////

@@ -15,6 +15,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using MahApps.Metro;
 using MahApps.Metro.Controls;
+using PrestamixC.dao;
 
 namespace PrestamixC
 {
@@ -33,25 +34,13 @@ namespace PrestamixC
         }
         void showPawnData()
         {
-            SqlConnection connection = new SqlConnection(connectionString);
-
-            connection.Open();
-
-            String sql = string.Format("SELECT Monto, Tipo, Fecha, Estado FROM Empenio WHERE Id = @thisId");
-            SqlCommand command = new SqlCommand(sql, connection);
-            command.Parameters.AddWithValue("@thisId", m_ID);
-
-            SqlDataReader reader = command.ExecuteReader();
-
-            DataTable TablaDatos = new DataTable(); // CREAMOS UN VALOR datatable PARA IMPRIMIR
-            TablaDatos.Load(reader); // CARGA EL READER ANTERIORMENTE CREADO
-            DataRow row = TablaDatos.Rows[0];
+            DBAccess m_dba = new DBAccess();
+            DataTable m_dt = m_dba.SelectFromTable("Empenio", true, true, 4, "Monto", "Tipo", "Fecha", "Estado", "Id", m_ID);           
+            DataRow row = m_dt.Rows[0];
             SumTextBox.Text = row["Monto"].ToString();
             typeTextBox.Text = row["Tipo"].ToString();
             mDateP.SelectedDate = DateTime.Parse(row["Fecha"].ToString());
-            StatusTextBox.Text = row["Estado"].ToString();
-
-            connection.Close();
+            StatusTextBox.Text = row["Estado"].ToString();           
         }
 
         private void confirmB_Click(object sender, RoutedEventArgs e)

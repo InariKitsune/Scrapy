@@ -27,6 +27,7 @@ namespace PrestamixC
         public RegistrarEmpeño()
         {
             InitializeComponent();
+            FechaTextBox.SelectedDate = DateTime.Today;
         }
 
         private void ConfirmarEmpeñoBoton_Click(object sender, RoutedEventArgs e)
