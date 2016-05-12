@@ -84,6 +84,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="dao\DBAccess.cs" />
     <Compile Include="EditPawn.xaml.cs">
       <DependentUpon>EditPawn.xaml</DependentUpon>
     </Compile>
@@ -179,7 +180,6 @@
     <Resource Include="img\scrapy.ico" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Controllers\" />
     <Folder Include="Exceptions\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

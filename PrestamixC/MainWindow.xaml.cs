@@ -16,6 +16,7 @@ using System.Data;
 using System.Data.SqlClient;
 using MahApps.Metro;
 using MahApps.Metro.Controls;
+using PrestamixC.dao;
 
 
 namespace PrestamixC
@@ -37,49 +38,21 @@ namespace PrestamixC
         }
         void MostrarEmpeños()
         {
-            SqlConnection connection = new SqlConnection(connectionString);
-
-            connection.Open();
-            String sql = string.Format("SELECT * FROM Empenio");
-            SqlCommand command = new SqlCommand(sql, connection);
-            SqlDataReader reader = command.ExecuteReader();
-            DataTable TablaDatos = new DataTable(); // CREAMOS UN VALOR datatable PARA IMPRIMIR
-            TablaDatos.Load(reader); // CARGA EL READER ANTERIORMENTE CREADO
-            connection.Close();
-
-            EmpeñosDataGrid.ItemsSource = TablaDatos.DefaultView;    // LE DECIMOS A LA TABLA QUE LEA LOS DATOS            
+            DBAccess m_dba = new DBAccess();
+            DataTable m_dt = m_dba.SelectAllFromTable("Empenio");
+            EmpeñosDataGrid.ItemsSource = m_dt.DefaultView;         
         }
         private void MostrarClientes()
         {
-            SqlConnection connection = new SqlConnection(connectionString);
-            connection.Open();
-
-            String sql = string.Format("SELECT * FROM Cliente");
-            SqlCommand command = new SqlCommand(sql, connection);
-
-            SqlDataReader reader = command.ExecuteReader();
-
-            DataTable TablaDatos = new DataTable(); // CREAMOS UN VALOR datatable PARA IMPRIMIR
-            TablaDatos.Load(reader); // CARGA EL READER ANTERIORMENTE CREADO
-            ClientesDataGrid.ItemsSource = TablaDatos.DefaultView;    // LE DECIMOS A LA TABLA QUE LEA LOS DATOS
-
-            connection.Close();
+            DBAccess m_dba = new DBAccess();            
+            DataTable m_dt = m_dba.SelectAllFromTable("Cliente");
+            ClientesDataGrid.ItemsSource = m_dt.DefaultView;            
         }
         void MostrarPrendas()
         {
-            SqlConnection connection = new SqlConnection(connectionString);
-            connection.Open();
-
-            String sql = string.Format("SELECT * FROM Prenda");
-            SqlCommand command = new SqlCommand(sql, connection);
-
-            SqlDataReader reader = command.ExecuteReader();
-
-            DataTable TablaDatos = new DataTable(); // CREAMOS UN VALOR datatable PARA IMPRIMIR
-            TablaDatos.Load(reader); // CARGA EL READER ANTERIORMENTE CREADO
-            PrendasDataGrid.ItemsSource = TablaDatos.DefaultView;    // LE DECIMOS A LA TABLA QUE LEA LOS DATOS
-
-            connection.Close();
+            DBAccess m_dba = new DBAccess();
+            DataTable m_dt = m_dba.SelectAllFromTable("Prenda");
+            PrendasDataGrid.ItemsSource = m_dt.DefaultView;    // LE DECIMOS A LA TABLA QUE LEA LOS DATOS            
         }
         //////////////////////////////////////////
         ////////////////////////////////////////// 
