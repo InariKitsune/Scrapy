@@ -52,7 +52,7 @@ namespace PrestamixC
         {
             DBAccess m_dba = new DBAccess();
             DataTable m_dt = m_dba.SelectAllFromTable("Prenda");
-            PrendasDataGrid.ItemsSource = m_dt.DefaultView;    // LE DECIMOS A LA TABLA QUE LEA LOS DATOS            
+            PrendasDataGrid.ItemsSource = m_dt.DefaultView;         
         }
         //////////////////////////////////////////
         ////////////////////////////////////////// 

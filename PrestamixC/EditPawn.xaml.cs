@@ -13,13 +13,15 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using MahApps.Metro;
+using MahApps.Metro.Controls;
 
 namespace PrestamixC
 {
     /// <summary>
     /// Interaction logic for EditPawn.xaml
     /// </summary>
-    public partial class EditPawn : Window
+    public partial class EditPawn : MetroWindow
     {
         private string connectionString = App.connectionString;
         private string m_ID = "-1"; 

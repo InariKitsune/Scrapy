@@ -88,5 +88,9 @@ namespace PrestamixC
             connection.Close();
             Close();
         }
+        private void cancelB_Click(object sender, RoutedEventArgs e)
+        {
+            Close();
+        }
     }
 }

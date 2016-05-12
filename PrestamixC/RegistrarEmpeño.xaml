@@ -3,43 +3,40 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:metro="http://metro.mahapps.com/winfx/xaml/controls"
         xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
-        Title="RegistrarEmpeño" Height="386.034" Width="707.69">
+        Title="RegistrarEmpeño" Height="512.034" Width="856.69">
     <Grid x:Name="FechaLabel" Margin="0,0,2,2">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="606*"/>
-            <ColumnDefinition Width="29*"/>
-        </Grid.ColumnDefinitions>
-        <Label x:Name="NombreLabel" Content="Nombre" HorizontalAlignment="Left" Margin="23,24,0,0" VerticalAlignment="Top" Width="102"/>
-        <Label x:Name="ApellidoPaternoLabel" Content="Apellido Paterno" HorizontalAlignment="Left" Margin="23,55,0,0" VerticalAlignment="Top" Width="102"/>
-        <Label x:Name="CiLabel" Content="C.I." HorizontalAlignment="Left" Margin="32,112,0,0" VerticalAlignment="Top" Width="60"/>
-        <Label x:Name="ApellidoMaternoLabel" Content="Apellido Materno" HorizontalAlignment="Left" Margin="23,86,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="DireccionLabel" Content="Dirección" HorizontalAlignment="Left" Margin="23,143,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.395,-0.115"/>
-        <Label x:Name="TelefonoLabel" Content="Telefono" HorizontalAlignment="Left" Margin="25,171,0,0" VerticalAlignment="Top" Width="59"/>
-        <TextBox x:Name="ApellidoPaternoTextBox" HorizontalAlignment="Left" Height="26" Margin="139,54,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="174"/>
-        <TextBox x:Name="ApellidoMaternoTextBox" HorizontalAlignment="Left" Height="26" Margin="139,86,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="174"/>
-        <TextBox x:Name="DireccionTextBox" HorizontalAlignment="Left" Height="23" Margin="139,146,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="174"/>
-        <TextBox x:Name="NombreTextBox" HorizontalAlignment="Left" Height="26" Margin="139,23,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="174"/>
-        <TextBox x:Name="CiTextBox" HorizontalAlignment="Left" Height="23" Margin="139,117,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="174"/>
-        <TextBox x:Name="TelefonoTextBox" HorizontalAlignment="Left" Height="23" Margin="139,174,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="174"/>
-        <Label x:Name="PrendaLabel" Content="Nombre Prenda" HorizontalAlignment="Left" Margin="24,197,0,0" VerticalAlignment="Top" Width="93" RenderTransformOrigin="-0.306,0.385"/>
-        <Label x:Name="DescripcionLabel" Content="Descripcion" HorizontalAlignment="Left" Margin="23,227,0,0" VerticalAlignment="Top" Width="93" RenderTransformOrigin="0.565,1.269"/>
-        <Label x:Name="UbicacionLabel" Content="Ubicacion" HorizontalAlignment="Left" Margin="24,311,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.237,-0.346" Width="93"/>
-        <TextBox x:Name="NombrePrendaTextBox" HorizontalAlignment="Left" Height="23" Margin="139,202,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="174"/>
-        <TextBox x:Name="DescripcionTextBox" HorizontalAlignment="Left" Height="39" Margin="139,230,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="174"/>
-        <TextBox x:Name="UbicacionTextBox" HorizontalAlignment="Left" Height="23" Margin="139,311,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="174"/>
-        <Button x:Name="ConfirmarEmpeñoBoton" Content="Confirmar Empeño" HorizontalAlignment="Left" Margin="421,260,0,0" VerticalAlignment="Top" Width="158" Height="26" RenderTransformOrigin="0.063,0.538" Click="ConfirmarEmpeñoBoton_Click"/>
-        <Label x:Name="MontoLabel" Content="Monto" HorizontalAlignment="Left" Margin="379,23,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="MontoTextBox" HorizontalAlignment="Left" Height="23" Margin="459,27,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <Label x:Name="TipoLabel" Content="Tipo" HorizontalAlignment="Left" Margin="379,54,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="TipoTextBox" HorizontalAlignment="Left" Height="23" Margin="459,58,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <Label x:Name="IdPrendaLabel" Content="Id Prenda" HorizontalAlignment="Left" Margin="25,279,0,0" VerticalAlignment="Top" Width="67"/>
-        <TextBox x:Name="IdPrendaTextBox" HorizontalAlignment="Left" Height="23" Margin="139,279,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="174"/>
-        <Label x:Name="EstadoLabel" Content="Estado" HorizontalAlignment="Left" Margin="380,122,0,0" VerticalAlignment="Top"/>
-        <Label Content="Fecha" HorizontalAlignment="Left" Margin="380,151,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="EstadoTextBox" HorizontalAlignment="Left" Height="23" Margin="459,122,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>        
-        <Label x:Name="IdEmpeñoLabel" Content="Id Empeño" HorizontalAlignment="Left" Margin="379,86,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="IdEmpeñoTextBox" HorizontalAlignment="Left" Height="23" Margin="459,90,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <DatePicker x:Name="FechaTextBox" HorizontalAlignment="Left" Margin="459,152,0,0" VerticalAlignment="Top" Width="120"/>
-
+        <Label x:Name="NombreLabel" Content="Nombre" HorizontalAlignment="Left" Margin="11,63,0,0" VerticalAlignment="Top" Width="62" Height="26"/>
+        <Label x:Name="ApellidoPaternoLabel" Content="Apellido Paterno" HorizontalAlignment="Left" Margin="257,63,0,0" VerticalAlignment="Top" Width="102" Height="26"/>
+        <Label x:Name="CiLabel" Content="C.I." HorizontalAlignment="Left" Margin="13,105,0,0" VerticalAlignment="Top" Width="60" Height="26"/>
+        <Label x:Name="ApellidoMaternoLabel" Content="Apellido Materno" HorizontalAlignment="Left" Margin="557,63,0,0" VerticalAlignment="Top" Height="26" Width="102"/>
+        <Label x:Name="DireccionLabel" Content="Dirección" HorizontalAlignment="Left" Margin="299,105,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.395,-0.115" Height="26" Width="60"/>
+        <Label x:Name="TelefonoLabel" Content="Telefono" HorizontalAlignment="Left" Margin="599,105,0,0" VerticalAlignment="Top" Width="59" Height="26"/>
+        <TextBox x:Name="ApellidoPaternoTextBox" HorizontalAlignment="Left" Height="36" Margin="359,53,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="174"/>
+        <TextBox x:Name="ApellidoMaternoTextBox" HorizontalAlignment="Left" Height="36" Margin="664,53,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="174"/>
+        <TextBox x:Name="DireccionTextBox" HorizontalAlignment="Left" Height="37" Margin="359,94,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="174"/>
+        <TextBox x:Name="NombreTextBox" HorizontalAlignment="Left" Height="36" Margin="69,53,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="163"/>
+        <TextBox x:Name="CiTextBox" HorizontalAlignment="Left" Height="37" Margin="69,94,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="163"/>
+        <TextBox x:Name="TelefonoTextBox" HorizontalAlignment="Left" Height="37" Margin="664,94,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="174"/>
+        <Label x:Name="PrendaLabel" Content="Nombre de la prenda" HorizontalAlignment="Left" Margin="13,190,0,0" VerticalAlignment="Top" Width="126" RenderTransformOrigin="-0.306,0.385" Height="26"/>
+        <Label x:Name="DescripcionLabel" Content="Descripcion" HorizontalAlignment="Left" Margin="371,190,0,0" VerticalAlignment="Top" Width="93" RenderTransformOrigin="0.565,1.269" Height="26"/>
+        <Label x:Name="UbicacionLabel" Content="Ubicacion" HorizontalAlignment="Left" Margin="13,274,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.237,-0.346" Width="93" Height="26"/>
+        <TextBox x:Name="NombrePrendaTextBox" HorizontalAlignment="Left" Height="37" Margin="138,179,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="163"/>
+        <TextBox x:Name="DescripcionTextBox" Height="79" Margin="371,221,59,0" TextWrapping="Wrap" VerticalAlignment="Top" Background="#FFE2E2E2"/>
+        <TextBox x:Name="UbicacionTextBox" HorizontalAlignment="Left" Height="37" Margin="138,263,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="163"/>
+        <Button x:Name="ConfirmarEmpeñoBoton" Content="Confirmar" HorizontalAlignment="Left" Margin="148,0,0,10" Width="100" Height="32" RenderTransformOrigin="0.063,0.538" Click="ConfirmarEmpeñoBoton_Click" VerticalAlignment="Bottom"/>
+        <Label x:Name="MontoLabel" Content="Monto" HorizontalAlignment="Left" Margin="274,360,0,0" VerticalAlignment="Top" Height="26" Width="46"/>
+        <TextBox x:Name="MontoTextBox" HorizontalAlignment="Left" Height="38" Margin="330,348,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Label x:Name="TipoLabel" Content="Tipo" HorizontalAlignment="Left" Margin="460,360,0,0" VerticalAlignment="Top" Height="26" Width="34"/>
+        <TextBox x:Name="TipoTextBox" HorizontalAlignment="Left" Height="38" Margin="499,348,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="54"/>
+        <Label x:Name="IdPrendaLabel" Content="Id Prenda" HorizontalAlignment="Left" Margin="13,232,0,0" VerticalAlignment="Top" Width="67" Height="26"/>
+        <TextBox x:Name="IdPrendaTextBox" HorizontalAlignment="Left" Height="37" Margin="138,221,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="163"/>
+        <Label Content="Fecha" HorizontalAlignment="Left" Margin="622,359,0,0" VerticalAlignment="Top" Height="26" Width="41"/>
+        <Label x:Name="IdEmpeñoLabel" Content="Id Empeño" HorizontalAlignment="Left" Margin="13,359,0,0" VerticalAlignment="Top" Height="26" Width="67"/>
+        <TextBox x:Name="IdEmpeñoTextBox" HorizontalAlignment="Left" Height="37" Margin="85,348,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <DatePicker x:Name="FechaTextBox" HorizontalAlignment="Left" Margin="668,348,0,0" VerticalAlignment="Top" Width="120" Height="37"/>
+        <Button x:Name="cancelB" Content="Cancelar" HorizontalAlignment="Right" Width="100" Margin="0,0,148,10" Click="cancelB_Click" Height="32" VerticalAlignment="Bottom"/>
+        <Label Content="Cliente" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="38" Width="206" FontSize="22" FontWeight="Bold"/>
+        <Label Content="Prenda" HorizontalAlignment="Left" Margin="10,136,0,0" VerticalAlignment="Top" Height="38" Width="206" FontSize="22" FontWeight="Bold"/>
+        <Label Content="Empeño" HorizontalAlignment="Left" Margin="13,305,0,0" VerticalAlignment="Top" Height="38" Width="206" FontSize="22" FontWeight="Bold"/>
     </Grid>
 </Controls:MetroWindow>
