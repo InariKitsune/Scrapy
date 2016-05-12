@@ -46,6 +46,17 @@ namespace PrestamixC.dao
             connection.Close();            
             return m_dt;
         }
+        /************************************************************************************
+         * ejemplos de entrada para la funcion SelectFromTable():
+         *      1.- SelectFromTable("tablename", false, false, 0)
+         *          ----La sentencia SQL que ejecuta es : SELECT * FROM tablename
+         *      2.- SelectFromTable("tablename", false, true, 0, "Id", "7989234")
+         *          ----La sentencia SQL que ejecuta es : SELECT * FROM tablename WHERE Id = "7989234"
+         *      3.- SelectFromTable("tablename", true, false, 2, "Monto", "Tipo")
+         *          ----La sentencia SQL que ejecuta es : SELECT Monto, Tipo FROM tablename
+         *      4.- SelectFromTable("tablename", true, true, 2, "Monto", "Tipo", "Id", "7989234")
+         *          ----La sentencia SQL que ejecuta es : SELECT Monto, Tipo FROM tablename WHERE Id = "7989234"
+         ************************************************************************************/
         public void InsertIntoTable()
         {
  

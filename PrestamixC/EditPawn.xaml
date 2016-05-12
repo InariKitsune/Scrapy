@@ -4,7 +4,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:metro="http://metro.mahapps.com/winfx/xaml/controls"
         xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"        
-        Title="EditPawn" Height="295" Width="338" IsMaxRestoreButtonEnabled="False">
+        Title="EditPawn" Height="295" Width="338" IsMaxRestoreButtonEnabled="False" Topmost="True">
     <Grid Margin="0,0,2,0">
         <DatePicker x:Name="mDateP" HorizontalAlignment="Left" Margin="105,109,0,0" VerticalAlignment="Top" Width="190" Height="37"/>
         <TextBox x:Name="typeTextBox" HorizontalAlignment="Left" Height="37" Margin="105,67,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="190"/>

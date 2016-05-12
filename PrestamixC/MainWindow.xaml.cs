@@ -26,56 +26,86 @@ namespace PrestamixC
     /// </summary>
     public partial class MainWindow : MetroWindow
     {
-        private string connectionString = App.connectionString;
+        private string connectionString = App.connectionString;        
         private bool VentanaRegistrarEmpeñoAbierta = false;
         private bool VentanaEditarEmpeñoAbierta = false;
+        RegistrarEmpeño ventanaEmp;
+        EditPawn ventanaEdt;
+        DBAccess m_dba;
         public MainWindow()
         {
             InitializeComponent();
+            m_dba = null;
+            ventanaEmp = null;
+            ventanaEdt = null; 
             MostrarEmpeños();
             MostrarPrendas();
-            MostrarClientes();
+            MostrarClientes();                       
         }
+        /*
+         *SHOW TABLES FROM DB
+         */
         void MostrarEmpeños()
         {
-            DBAccess m_dba = new DBAccess();
+            m_dba = new DBAccess();
             DataTable m_dt = m_dba.SelectFromTable("Empenio", false, false, 0);
-            EmpeñosDataGrid.ItemsSource = m_dt.DefaultView;         
+            EmpeñosDataGrid.ItemsSource = m_dt.DefaultView;
+            m_dba = null;
         }
         private void MostrarClientes()
         {
-            DBAccess m_dba = new DBAccess();
+            m_dba = new DBAccess();
             DataTable m_dt = m_dba.SelectFromTable("Cliente", false, false, 0);
-            ClientesDataGrid.ItemsSource = m_dt.DefaultView;            
+            ClientesDataGrid.ItemsSource = m_dt.DefaultView;
+            m_dba = null;
         }
         void MostrarPrendas()
         {
-            DBAccess m_dba = new DBAccess();
+            m_dba = new DBAccess();
             DataTable m_dt = m_dba.SelectFromTable("Prenda", false, false, 0);
-            PrendasDataGrid.ItemsSource = m_dt.DefaultView;         
+            PrendasDataGrid.ItemsSource = m_dt.DefaultView;
+            m_dba = null;
         }
-        //////////////////////////////////////////
-        ////////////////////////////////////////// 
+        /*
+         *OTHER WINDOWS
+         */
         private void BotonRegistrarEmpeños_Click(object sender, RoutedEventArgs e)
         {
             if (!VentanaRegistrarEmpeñoAbierta)
             {
                 VentanaRegistrarEmpeñoAbierta = true;
-                RegistrarEmpeño ventanaEmp = new RegistrarEmpeño();
+                ventanaEmp = new RegistrarEmpeño();
                 ventanaEmp.Closed += new EventHandler(RegistrarEmpeño_Closed);
                 ventanaEmp.Show();
+            }               
+        }
+        private void EditSPawn_Click(object sender, RoutedEventArgs e)
+        {
+            if (!VentanaEditarEmpeñoAbierta)
+            {
+                DataRowView drv = (DataRowView)EmpeñosDataGrid.SelectedItem;
+                String result = (drv["Id"]).ToString();//here we select a pawn's id from the datagrid
+                VentanaEditarEmpeñoAbierta = true;
+                ventanaEdt = new EditPawn(result);
+                ventanaEdt.Closed += new EventHandler(EditPawn_Closed);
+                ventanaEdt.Show();
             }
         }
         private void EditPawn_Closed(object sender, EventArgs e)
         {
             VentanaEditarEmpeñoAbierta = false;
+            ventanaEdt = null;
             MostrarEmpeños();
         }
         private void RegistrarEmpeño_Closed(object sender, EventArgs e)
         {
             VentanaRegistrarEmpeñoAbierta = false;
+            ventanaEmp = null;
             MostrarEmpeños();
-        } 
+        }       
+        /*
+         *DELETE
+         */
         private void DeleteButton_Click(object sender, RoutedEventArgs e)//code for delete pawns
         {
             DataRowView drv = (DataRowView)EmpeñosDataGrid.SelectedItem;
@@ -89,20 +119,6 @@ namespace PrestamixC
             connection.Close();
             MostrarEmpeños();
         }
-        private void EditSPawn_Click(object sender, RoutedEventArgs e)
-        {
-            if (!VentanaEditarEmpeñoAbierta)
-            {
-                DataRowView drv = (DataRowView)EmpeñosDataGrid.SelectedItem;
-                String result = (drv["Id"]).ToString();//here we select a pawn's id from the datagrid
-                VentanaEditarEmpeñoAbierta = true;
-                EditPawn ventanaEdt = new EditPawn(result);
-                ventanaEdt.Closed += new EventHandler(EditPawn_Closed);
-                ventanaEdt.Show();
-            }
-        }
-        //////////////////////////////////////////
-        //////////////////////////////////////////
         private void DeletePledge_Click(object sender, RoutedEventArgs e)
         {
             DataRowView drv = (DataRowView)PrendasDataGrid.SelectedItem;
@@ -116,9 +132,7 @@ namespace PrestamixC
             command1.ExecuteNonQuery();
             connection.Close();
             MostrarPrendas();
-        }
-        //////////////////////////////////////////
-        //////////////////////////////////////////
+        }        
         private void DeleteCustomer_Click(object sender, RoutedEventArgs e)
         {
             DataRowView drv = (DataRowView)ClientesDataGrid.SelectedItem;
@@ -132,9 +146,82 @@ namespace PrestamixC
             command1.ExecuteNonQuery();
             connection.Close();
             MostrarClientes();
-        }        
-        //////////////////////////////////////////
-        ////////////////////////////////////////// 
+        }
+        /*
+         *SEARCH
+         */
+        private void pawnSearchButton_Click(object sender, RoutedEventArgs e)
+        {
+            string category="";
+            switch(pawnSearchCategory.SelectedIndex)
+            {
+                case 0:
+                    category = "Id";
+                    break;
+                case 1:
+                    category = "idCliente";
+                    break;
+                case 2:
+                    category = "idPrenda";
+                    break;
+                case 3:
+                    category = "Monto";
+                    break;
+                case 4:
+                    category = "Tipo";
+                    break;                
+                case 5:
+                    category = "Estado";
+                    break;                
+            }
+            m_dba = new DBAccess();
+            DataTable m_dt = m_dba.SelectFromTable("Empenio", false, true, 0, category, pawnSearchCriteria.Text);
+            EmpeñosDataGrid.ItemsSource = m_dt.DefaultView;
+            m_dba = null;
+        }
+        private void pledgeSearchButton_Click(object sender, RoutedEventArgs e)
+        {
+            string category = "";
+            switch (pledgeSearchCaterogy.SelectedIndex)
+            {
+                case 0:
+                    category = "Id";
+                    break;
+                case 1:
+                    category = "Nombre";
+                    break;
+                case 2:
+                    category = "Ubicacion";
+                    break;                
+            }
+            m_dba = new DBAccess();
+            DataTable m_dt = m_dba.SelectFromTable("Prenda", false, true, 0, category, pledgeSearchCriteria.Text);
+            PrendasDataGrid.ItemsSource = m_dt.DefaultView;
+            m_dba = null;
+        }
+        private void customerSearchButton_Click(object sender, RoutedEventArgs e)
+        {
+            string category = "";
+            switch (customerSearchCategory.SelectedIndex)
+            {
+                case 0:
+                    category = "Id";
+                    break;
+                case 1:
+                    category = "Nombre";
+                    break;
+                case 2:
+                    category = "ApellidoP";
+                    break;               
+            }
+            m_dba = new DBAccess();
+            DataTable m_dt = m_dba.SelectFromTable("Cliente", false, true, 0, category, customerSearchCriteria.Text);
+            ClientesDataGrid.ItemsSource = m_dt.DefaultView;
+            m_dba = null;
+        }
+        /*
+         *TAB CONTROL
+         */
         private void customersTab_Selected(object sender, RoutedEventArgs e)
         {
             MostrarClientes();
@@ -149,7 +236,9 @@ namespace PrestamixC
         {
             MostrarEmpeños();            
         }
-
+        /*
+         *THEME SELECTOR
+         */
         private void themeSelector_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             Uri uri1, uri2;  
@@ -344,6 +433,6 @@ namespace PrestamixC
             }
            
             ((App)Application.Current).ChangeTheme(uri1, uri2);            
-        }        
+        }
     }
 }

@@ -25,11 +25,13 @@ namespace PrestamixC
     public partial class EditPawn : MetroWindow
     {
         private string connectionString = App.connectionString;
-        private string m_ID = "-1"; 
+        private string m_ID = "-1";
+        private DBAccess m_dba;
         public EditPawn(string id)
         {
             InitializeComponent();
             m_ID = id;
+            m_dba = null;
             showPawnData();
         }
         void showPawnData()
@@ -40,7 +42,8 @@ namespace PrestamixC
             SumTextBox.Text = row["Monto"].ToString();
             typeTextBox.Text = row["Tipo"].ToString();
             mDateP.SelectedDate = DateTime.Parse(row["Fecha"].ToString());
-            StatusTextBox.Text = row["Estado"].ToString();           
+            StatusTextBox.Text = row["Estado"].ToString();
+            m_dba = null;
         }
 
         private void confirmB_Click(object sender, RoutedEventArgs e)

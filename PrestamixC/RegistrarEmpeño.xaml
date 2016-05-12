@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:metro="http://metro.mahapps.com/winfx/xaml/controls"
         xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
-        Title="RegistrarEmpeño" Height="512.034" Width="856.69" IsMaxRestoreButtonEnabled="False">
+        Title="RegistrarEmpeño" Height="512.034" Width="856.69" IsMaxRestoreButtonEnabled="False" Topmost="True">
     <Grid x:Name="FechaLabel" Margin="0,0,2,2">
         <Label x:Name="NombreLabel" Content="Nombre" HorizontalAlignment="Left" Margin="11,63,0,0" VerticalAlignment="Top" Width="62" Height="26"/>
         <Label x:Name="ApellidoPaternoLabel" Content="Apellido Paterno" HorizontalAlignment="Left" Margin="257,63,0,0" VerticalAlignment="Top" Width="102" Height="26"/>
