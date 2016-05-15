@@ -57,17 +57,70 @@ namespace PrestamixC.dao
          *      4.- SelectFromTable("tablename", true, true, 2, "Monto", "Tipo", "Id", "7989234")
          *          ----La sentencia SQL que ejecuta es : SELECT Monto, Tipo FROM tablename WHERE Id = "7989234"
          ************************************************************************************/
-        public void InsertIntoTable()
+        public void InsertIntoTable(string tablename, params string[] values)
         {
- 
+            string query = "INSERT INTO " + tablename + " (";
+            int i;
+            for (i = 0; i < values.Length/2; i++)
+            {
+                query = query + values[i];
+                if (i < (values.Length/2) - 1)
+                    query = query + ", ";
+            }
+            query = query + " ) VALUES ( ";
+            for (i = values.Length / 2; i < values.Length; i++)
+            {
+                query = query + "@inn"+ i;
+                if (i < (values.Length) - 1)
+                    query = query + ", ";
+            }
+            query = query + " )";
+            SqlConnection connection = new SqlConnection(connectionString);
+            connection.Open();
+            String sql = string.Format(query);
+            SqlCommand command = new SqlCommand(sql, connection);
+            for (i = values.Length/2; i < values.Length; i++)
+            {
+                string inParam = "@inn" + i;
+                command.Parameters.AddWithValue(inParam, values[i]);
+            }
+            command.ExecuteNonQuery();           
+            connection.Close();    
         }
-        public void DeleteFromTable()
+        public void DeleteFromTable(string tablename, string id)
         {
- 
+            string query = "DELETE FROM " + tablename + " WHERE Id=@cond";
+            SqlConnection connection = new SqlConnection(connectionString);
+            connection.Open();
+            String sql1 = string.Format(query);
+            SqlCommand command = new SqlCommand(sql1, connection);
+            command.Parameters.AddWithValue("@cond", id);
+            command.ExecuteNonQuery();
+            connection.Close();
         }
-        public void UpdateTable()
-        { 
-        
+        public void UpdateTable(string tablename, int nColums, params string[] values)
+        {
+            SqlConnection connection = new SqlConnection(connectionString);
+            string query = "UPDATE " +tablename+ " SET ";
+            for (int i = 0; i < nColums; i++)
+            {
+                query = query + values[i] + "=@dat" + i;
+                if (i < nColums - 1)
+                    query = query + ", ";
+            }
+            query = query + " WHERE Id=@conn";            
+            connection.Open();
+            String sql1 = string.Format(query);
+            SqlCommand command = new SqlCommand(sql1, connection);
+            int j = 0;
+            for (int i = nColums; i < nColums*2; i++)
+            {
+                string inParam = "@dat" + j;
+                j++;
+                command.Parameters.AddWithValue(inParam, values[i]);
+            }
+            command.Parameters.AddWithValue("@conn", values[values.Length - 1]);
+            command.ExecuteNonQuery();
         }
     }
 }

@@ -26,7 +26,6 @@ namespace PrestamixC
     /// </summary>
     public partial class MainWindow : MetroWindow
     {
-        private string connectionString = App.connectionString;        
         private bool VentanaRegistrarEmpeñoAbierta = false;
         private bool VentanaEditarEmpeñoAbierta = false;
         RegistrarEmpeño ventanaEmp;
@@ -65,7 +64,7 @@ namespace PrestamixC
             DataTable m_dt = m_dba.SelectFromTable("Prenda", false, false, 0);
             PrendasDataGrid.ItemsSource = m_dt.DefaultView;
             m_dba = null;
-        }
+        }        
         /*
          *OTHER WINDOWS
          */
@@ -91,6 +90,14 @@ namespace PrestamixC
                 ventanaEdt.Show();
             }
         }
+        private void EditPledge_Copy_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+        private void EditCustomer_Copy1_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
         private void EditPawn_Closed(object sender, EventArgs e)
         {
             VentanaEditarEmpeñoAbierta = false;
@@ -102,49 +109,32 @@ namespace PrestamixC
             VentanaRegistrarEmpeñoAbierta = false;
             ventanaEmp = null;
             MostrarEmpeños();
-        }       
+        }        
         /*
          *DELETE
          */
         private void DeleteButton_Click(object sender, RoutedEventArgs e)//code for delete pawns
         {
-            DataRowView drv = (DataRowView)EmpeñosDataGrid.SelectedItem;
-            String result = (drv["Id"]).ToString();//here we select a pawn's id from the datagrid          
-            SqlConnection connection = new SqlConnection(connectionString);
-            connection.Open();
-            String sql1 = string.Format("DELETE FROM Empenio WHERE Id=@result");           
-            SqlCommand command1 = new SqlCommand(sql1, connection);                      
-            command1.Parameters.AddWithValue("@result", result);        
-            command1.ExecuteNonQuery();       
-            connection.Close();
+            m_dba = new DBAccess();
+            DataRowView drv = (DataRowView)EmpeñosDataGrid.SelectedItem;                    
+            m_dba.DeleteFromTable("Empenio", (drv["Id"]).ToString());                       
+            m_dba = null;
             MostrarEmpeños();
         }
         private void DeletePledge_Click(object sender, RoutedEventArgs e)
         {
-            DataRowView drv = (DataRowView)PrendasDataGrid.SelectedItem;
-            String result = (drv["Id"]).ToString();//here we select a pledge's id from the datagrid
-            
-            SqlConnection connection = new SqlConnection(connectionString);
-            connection.Open();
-            String sql1 = string.Format("DELETE FROM Prenda WHERE Id=@result");
-            SqlCommand command1 = new SqlCommand(sql1, connection);
-            command1.Parameters.AddWithValue("@result", result);
-            command1.ExecuteNonQuery();
-            connection.Close();
+            m_dba = new DBAccess();
+            DataRowView drv = (DataRowView)PrendasDataGrid.SelectedItem;            
+            m_dba.DeleteFromTable("Prenda", (drv["Id"]).ToString());
+            m_dba = null;
             MostrarPrendas();
         }        
         private void DeleteCustomer_Click(object sender, RoutedEventArgs e)
         {
+            m_dba = new DBAccess();
             DataRowView drv = (DataRowView)ClientesDataGrid.SelectedItem;
-            String result = (drv["Id"]).ToString();//here we select a pawn's id from the datagrid
-            
-            SqlConnection connection = new SqlConnection(connectionString);
-            connection.Open();
-            String sql1 = string.Format("DELETE FROM Cliente WHERE Id=@result");
-            SqlCommand command1 = new SqlCommand(sql1, connection);
-            command1.Parameters.AddWithValue("@result", result);
-            command1.ExecuteNonQuery();
-            connection.Close();
+            m_dba.DeleteFromTable("Cliente", (drv["Id"]).ToString());
+            m_dba = null;
             MostrarClientes();
         }
         /*

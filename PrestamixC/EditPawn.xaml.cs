@@ -24,7 +24,6 @@ namespace PrestamixC
     /// </summary>
     public partial class EditPawn : MetroWindow
     {
-        private string connectionString = App.connectionString;
         private string m_ID = "-1";
         private DBAccess m_dba;
         public EditPawn(string id)
@@ -36,7 +35,7 @@ namespace PrestamixC
         }
         void showPawnData()
         {
-            DBAccess m_dba = new DBAccess();
+            m_dba = new DBAccess();
             DataTable m_dt = m_dba.SelectFromTable("Empenio", true, true, 4, "Monto", "Tipo", "Fecha", "Estado", "Id", m_ID);           
             DataRow row = m_dt.Rows[0];
             SumTextBox.Text = row["Monto"].ToString();
@@ -48,22 +47,9 @@ namespace PrestamixC
 
         private void confirmB_Click(object sender, RoutedEventArgs e)
         {
-            SqlConnection connection = new SqlConnection(connectionString);
-
-            connection.Open();
-
-            String sql = string.Format("UPDATE Empenio SET Monto = @mSum, Tipo = @mType, Fecha = @mDate, Estado = @mStatus WHERE Id = @thisId");
-            SqlCommand command = new SqlCommand(sql, connection);           
-            string mSum = SumTextBox.Text;
-            string mType = typeTextBox.Text;
-            string mStatus = StatusTextBox.Text;
-            DateTime? Fecha = mDateP.SelectedDate;
-            command.Parameters.AddWithValue("@mSum", mSum);
-            command.Parameters.AddWithValue("@mType", mType);
-            command.Parameters.AddWithValue("@mDate", Fecha);
-            command.Parameters.AddWithValue("@mStatus", mStatus);
-            command.Parameters.AddWithValue("@thisId", m_ID);
-            command.ExecuteNonQuery();
+            m_dba = new DBAccess();
+            m_dba.UpdateTable("Empenio", 4, "Monto", "Tipo", "Fecha", "Estado", SumTextBox.Text, typeTextBox.Text, mDateP.SelectedDate.ToString(), StatusTextBox.Text, m_ID); 
+            m_dba = null;
             Close();
         }
 

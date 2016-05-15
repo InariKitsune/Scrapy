@@ -13,7 +13,6 @@ namespace PrestamixC
     /// </summary>
     public partial class App : Application
     {
-        public static string connectionString = @"Data Source=(LocalDB)\v11.0;AttachDbFileName=G:\PrestamixCv2.1\PrestamixCv2.1\PrestamixC\DB\Database1.mdf;Integrated Security=True;";
         public void ChangeTheme(Uri newUri, Uri newUri2)
         {
             ResourceDictionary resourceDict1 = Application.LoadComponent(new Uri(@"/MahApps.Metro;component/Styles/Controls.xaml", UriKind.Relative)) as ResourceDictionary;

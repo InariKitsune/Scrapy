@@ -36,6 +36,24 @@
         <TabControl Margin="10,10,81,10" Controls:TabControlHelper.IsUnderlined="True">
             <TabItem x:Name="pawnsTab" Header="Empeños" Selector.Selected="pawnsTab_Selected" Margin="0,0,0,-4">
                 <Grid>
+                    <ComboBox x:Name="pawnSearchCategory" Margin="10,10,0,0" VerticalAlignment="Top" Height="30" IsReadOnly="True" HorizontalAlignment="Left" Width="125">
+                        <ComboBoxItem Content="Número de empeño"/>
+                        <ComboBoxItem Content="CI del cliente"/>
+                        <ComboBoxItem Content="Número de prenda"/>
+                        <ComboBoxItem Content="Monto"/>
+                        <ComboBoxItem Content="Unidad monetaria"/>
+                        <ComboBoxItem Content="Estado"/>
+                    </ComboBox>
+                    <TextBox x:Name="pawnSearchCriteria" Height="30" Margin="140,10,359,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top"/>
+                    <Button x:Name="pawnSearchButton" Margin="0,10,233,0" VerticalAlignment="Top" Height="30" HorizontalAlignment="Right" Width="121" Click="pawnSearchButton_Click">
+                        <DockPanel Width="99" Height="27">
+                            <Image x:Name="searchImage" Source="img/searchLight.png" Width="32" Margin="0,-7,0,-3"/>
+                            <TextBlock RenderTransformOrigin="0.476,0.48" Width="56" Margin="0,0,0,4">
+                                Buscar
+                            </TextBlock>
+                        </DockPanel>
+                    </Button>
+                    <DataGrid x:Name="EmpeñosDataGrid" Margin="10,45,233,10" SelectionUnit="FullRow" SelectedItem="  " IsSynchronizedWithCurrentItem="True" IsReadOnly="True"/>
                     <Button x:Name="BotonRegistrarEmpeños" Margin="0,45,103,0" VerticalAlignment="Top" Height="33" Click="BotonRegistrarEmpeños_Click" HorizontalAlignment="Right" Width="125">
                         <DockPanel Width="99" Height="27">
                             <Image x:Name="addImage" Source="img/addLight.png" Width="29"/>
@@ -44,7 +62,6 @@
                             </TextBlock>
                         </DockPanel>
                     </Button>
-                    <DataGrid x:Name="EmpeñosDataGrid" Margin="10,45,233,10" SelectionUnit="FullRow" SelectedItem="  " IsSynchronizedWithCurrentItem="True" IsReadOnly="True"/>
                     <Button x:Name="DeleteButton" Margin="0,83,103,0" VerticalAlignment="Top" Height="33" Click="DeleteButton_Click" HorizontalAlignment="Right" Width="125">
                         <DockPanel Width="98" Height="27">
                             <Image x:Name="deleteImage" Source="img/closeLight.png" Width="30" RenderTransformOrigin="0.5,0.265" Margin="0,-6" />
@@ -61,40 +78,10 @@
                             </TextBlock>
                         </DockPanel>
                     </Button>
-                    <ComboBox x:Name="pawnSearchCategory" Margin="10,10,0,0" VerticalAlignment="Top" Height="30" IsReadOnly="True" HorizontalAlignment="Left" Width="125">
-                        <ComboBoxItem Content="Número de empeño"/>
-                        <ComboBoxItem Content="CI del cliente"/>
-                        <ComboBoxItem Content="Número de prenda"/>
-                        <ComboBoxItem Content="Monto"/>
-                        <ComboBoxItem Content="Unidad monetaria"/>                        
-                        <ComboBoxItem Content="Estado"/>
-                    </ComboBox>
-                    <TextBox x:Name="pawnSearchCriteria" Height="30" Margin="140,10,359,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top"/>
-                    <Button x:Name="pawnSearchButton" Margin="0,10,233,0" VerticalAlignment="Top" Height="30" HorizontalAlignment="Right" Width="121" Click="pawnSearchButton_Click">
-                        <DockPanel Width="99" Height="27">
-                            <Image x:Name="searchImage" Source="img/searchLight.png" Width="32" Margin="0,-7,0,-3"/>
-                            <TextBlock RenderTransformOrigin="0.476,0.48" Width="56" Margin="0,0,0,4">
-                                Buscar
-                            </TextBlock>
-                        </DockPanel>
-                    </Button>
                 </Grid>
             </TabItem>
             <TabItem x:Name="pledgetab" Header="Prendas" Margin="-2,0,-2,-3" Selector.Selected="pledgetab_Selected">
                 <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="10*"/>
-                        <ColumnDefinition Width="899*"/>
-                    </Grid.ColumnDefinitions>
-                    <DataGrid x:Name="PrendasDataGrid" Margin="0,45,233,51" IsSynchronizedWithCurrentItem="True" IsReadOnly="True" Grid.Column="1"/>
-                    <Button x:Name="DeletePledge" Margin="0,45,103,0" VerticalAlignment="Top" Height="48" Click="DeletePledge_Click" Grid.Column="1" HorizontalAlignment="Right" Width="125">
-                        <DockPanel Width="98" Height="27">
-                            <Image x:Name="deleteImageP" Source="img/closeLight.png" Width="30" RenderTransformOrigin="0.5,0.265" Margin="0,-6" />
-                            <TextBlock RenderTransformOrigin="0.476,0.48" Width="55" Margin="0,3,0,1">
-                                Eliminar
-                            </TextBlock>
-                        </DockPanel>
-                    </Button>
                     <ComboBox x:Name="pledgeSearchCaterogy" HorizontalAlignment="Left" Margin="0,10,0,0" VerticalAlignment="Top" Width="125" Height="30" Grid.Column="1" IsReadOnly="True">
                         <ComboBoxItem Content="Número de prenda"/>
                         <ComboBoxItem Content="Nombre de la prenda"/>
@@ -109,19 +96,25 @@
                             </TextBlock>
                         </DockPanel>
                     </Button>
-                </Grid>
-            </TabItem>
-            <TabItem x:Name="customersTab" Header="Clientes" Margin="-2,0,-2,-3" Selector.Selected="customersTab_Selected">
-                <Grid>
-                    <DataGrid x:Name="ClientesDataGrid" Margin="10,45,233,51" IsSynchronizedWithCurrentItem="True" IsReadOnly="True"/>
-                    <Button x:Name="DeleteCustomer" Margin="0,45,103,0" VerticalAlignment="Top" Height="43" Click="DeleteCustomer_Click" HorizontalAlignment="Right" Width="125">
+                    <DataGrid x:Name="PrendasDataGrid" Margin="0,45,233,51" IsSynchronizedWithCurrentItem="True" IsReadOnly="True" Grid.Column="1"/>
+                    <Button x:Name="DeletePledge" Margin="0,45,103,0" VerticalAlignment="Top" Height="33" Click="DeletePledge_Click" HorizontalAlignment="Right" Width="125">
                         <DockPanel Width="98" Height="27">
-                            <Image x:Name="deleteImageC" Source="img/closeLight.png" Width="30" RenderTransformOrigin="0.5,0.265" Margin="0,-6" />
+                            <Image x:Name="deleteImageP" Source="img/closeLight.png" Width="30" RenderTransformOrigin="0.5,0.265" Margin="0,-6" />
                             <TextBlock RenderTransformOrigin="0.476,0.48" Width="55" Margin="0,3,0,1">
                                 Eliminar
                             </TextBlock>
                         </DockPanel>
                     </Button>
+                    <Button x:Name="EditPledge_Copy" Margin="0,83,103,0" VerticalAlignment="Top" Height="33" RenderTransformOrigin="-1.16,2.091" HorizontalAlignment="Right" Width="125" Click="EditPledge_Copy_Click">
+                        <DockPanel HorizontalAlignment="Right" Width="91" Height="23">
+                            <Image x:Name="editImage1" Source="img/editLight.png" Width="29" Margin="0,-13"/>
+                            <TextBlock RenderTransformOrigin="0.476,0.48" Height="19" Margin="0,2" Width="49"><Run Text="Editar"/></TextBlock>
+                        </DockPanel>
+                    </Button>
+                </Grid>
+            </TabItem>
+            <TabItem x:Name="customersTab" Header="Clientes" Margin="-2,0,-2,-3" Selector.Selected="customersTab_Selected">
+                <Grid>
                     <ComboBox x:Name="customerSearchCategory" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="125" Height="30" IsReadOnly="True">
                         <ComboBoxItem Content="CI del cliente"/>
                         <ComboBoxItem Content="Nombre"/>
@@ -136,17 +129,27 @@
                             </TextBlock>
                         </DockPanel>
                     </Button>
+                    <DataGrid x:Name="ClientesDataGrid" Margin="10,45,233,51" IsSynchronizedWithCurrentItem="True" IsReadOnly="True"/>
+                    <Button x:Name="DeleteCustomer" Margin="0,45,103,0" VerticalAlignment="Top" Height="33" Click="DeleteCustomer_Click" HorizontalAlignment="Right" Width="125">
+                        <DockPanel Width="98" Height="27">
+                            <Image x:Name="deleteImageC" Source="img/closeLight.png" Width="30" RenderTransformOrigin="0.5,0.265" Margin="0,-6" />
+                            <TextBlock RenderTransformOrigin="0.476,0.48" Width="55" Margin="0,3,0,1">
+                                Eliminar
+                            </TextBlock>
+                        </DockPanel>
+                    </Button>
+                    <Button x:Name="EditCustomer_Copy1" Margin="0,83,103,0" VerticalAlignment="Top" Height="33" RenderTransformOrigin="-1.16,2.091" HorizontalAlignment="Right" Width="125" Click="EditCustomer_Copy1_Click">
+                        <DockPanel HorizontalAlignment="Right" Width="91" Height="23">
+                            <Image x:Name="editImage2" Source="img/editLight.png" Width="29" Margin="0,-13"/>
+                            <TextBlock RenderTransformOrigin="0.476,0.48" Height="19" Margin="0,2" Width="49"><Run Text="Editar"/></TextBlock>
+                        </DockPanel>
+                    </Button>
                 </Grid>
             </TabItem>
             <TabItem Header="Depósitos" Margin="-2,0,-2,-3" IsEnabled="False">
                 <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="0*"/>
-                        <ColumnDefinition/>
-                    </Grid.ColumnDefinitions>
                 </Grid>
             </TabItem>
         </TabControl>
-
     </Grid>
 </Controls:MetroWindow>

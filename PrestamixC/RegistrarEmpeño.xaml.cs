@@ -15,6 +15,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using MahApps.Metro;
 using MahApps.Metro.Controls;
+using PrestamixC.dao;
 
 namespace PrestamixC
 {
@@ -23,7 +24,7 @@ namespace PrestamixC
     /// </summary>
     public partial class RegistrarEmpeño : MetroWindow
     {
-        private string connectionString = App.connectionString;
+        private DBAccess m_dba;
         public RegistrarEmpeño()
         {
             InitializeComponent();
@@ -32,61 +33,11 @@ namespace PrestamixC
 
         private void ConfirmarEmpeñoBoton_Click(object sender, RoutedEventArgs e)
         {
-            SqlConnection connection = new SqlConnection(connectionString);
-
-            connection.Open();
-
-            String sql1 = string.Format("INSERT INTO Cliente (Id,Nombre,ApellidoP,ApellidoM,Direccion,Telefono) VALUES (@Id,@Nombre,@ApellidoP,@ApellidoM,@Direccion,@Telefono)");
-            String sql2 = string.Format("INSERT INTO Prenda (Id,Nombre,Ubicacion,Descripcion) VALUES (@Id,@Nombre,@Ubicacion,@Descripcion)");
-            String sql3 = string.Format("INSERT INTO Empenio (Id,IdCliente,IdPrenda,Monto,Tipo,Fecha,Estado) VALUES (@Id,@IdCliente,@IdPrenda,@Monto, @Tipo,@Fecha,@Estado)");
-            SqlCommand command1 = new SqlCommand(sql1, connection);
-            SqlCommand command2 = new SqlCommand(sql2, connection);
-            SqlCommand command3 = new SqlCommand(sql3, connection);
-
-            string Id = CiTextBox.Text;
-            string Nombre = NombreTextBox.Text;
-            string ApellidoP = ApellidoPaternoTextBox.Text;
-            string ApellidoM = ApellidoMaternoTextBox.Text;
-            string Direccion = DireccionTextBox.Text;
-            string Telefono = TelefonoTextBox.Text;
-
-            string NombrePrenda = NombrePrendaTextBox.Text;
-            string IdPrenda = IdPrendaTextBox.Text;
-            string Descripcion = DescripcionTextBox.Text;
-            string Ubicacion = UbicacionTextBox.Text;
-
-            string IdEmp = IdEmpeñoTextBox.Text;
-            string IdCliente = CiTextBox.Text;
-            string IdPren = IdPrendaTextBox.Text;
-            string Monto = MontoTextBox.Text;
-            string Tipo = TipoTextBox.Text;
-            DateTime? Fecha = FechaTextBox.SelectedDate;
-
-            command1.Parameters.AddWithValue("@Id", Id);
-            command1.Parameters.AddWithValue("@Nombre", Nombre);
-            command1.Parameters.AddWithValue("@ApellidoP", ApellidoP);
-            command1.Parameters.AddWithValue("@ApellidoM", ApellidoM);
-            command1.Parameters.AddWithValue("@Direccion", Direccion);
-            command1.Parameters.AddWithValue("@Telefono", Telefono);
-            
-            command2.Parameters.AddWithValue("@Id", IdPrenda);
-            command2.Parameters.AddWithValue("@Nombre", NombrePrenda);
-            command2.Parameters.AddWithValue("@Ubicacion", Ubicacion);
-            command2.Parameters.AddWithValue("@Descripcion", Descripcion);
-
-            command3.Parameters.AddWithValue("@Id", Id);
-            command3.Parameters.AddWithValue("@IdCliente", IdCliente);
-            command3.Parameters.AddWithValue("@IdPrenda", IdPrenda);
-            command3.Parameters.AddWithValue("@Monto", Monto);
-            command3.Parameters.AddWithValue("@Tipo", Tipo);
-            command3.Parameters.AddWithValue("@Fecha", Fecha);
-            command3.Parameters.AddWithValue("@Estado", "Vigente");
-
-            command1.ExecuteNonQuery();
-            command2.ExecuteNonQuery();
-            command3.ExecuteNonQuery();
-
-            connection.Close();
+            m_dba = new DBAccess();          
+            m_dba.InsertIntoTable("Cliente", "Id", "Nombre", "ApellidoP", "ApellidoM", "Direccion", "Telefono", CiTextBox.Text, NombreTextBox.Text, ApellidoPaternoTextBox.Text, ApellidoMaternoTextBox.Text, DireccionTextBox.Text, TelefonoTextBox.Text);
+            m_dba.InsertIntoTable("Empenio", "Id", "IdCliente", "IdPrenda", "Monto", "Tipo", "Fecha", "Estado", IdEmpeñoTextBox.Text, CiTextBox.Text, IdPrendaTextBox.Text, MontoTextBox.Text, TipoTextBox.Text, FechaTextBox.SelectedDate.ToString(), "Vigente");
+            m_dba.InsertIntoTable("Prenda", "Id", "Nombre", "Ubicacion", "Descripcion", IdPrendaTextBox.Text, NombrePrendaTextBox.Text, UbicacionTextBox.Text, DescripcionTextBox.Text);
+            m_dba = null;
             Close();
         }
         private void cancelB_Click(object sender, RoutedEventArgs e)
