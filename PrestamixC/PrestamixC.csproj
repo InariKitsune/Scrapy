@@ -85,15 +85,29 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="dao\DBAccess.cs" />
+    <Compile Include="EditCustomer.xaml.cs">
+      <DependentUpon>EditCustomer.xaml</DependentUpon>
+    </Compile>
     <Compile Include="EditPawn.xaml.cs">
       <DependentUpon>EditPawn.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="EditPledge.xaml.cs">
+      <DependentUpon>EditPledge.xaml</DependentUpon>
     </Compile>
     <Compile Include="RegistrarEmpeño.xaml.cs">
       <DependentUpon>RegistrarEmpeño.xaml</DependentUpon>
     </Compile>
+    <Page Include="EditCustomer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="EditPawn.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="EditPledge.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>

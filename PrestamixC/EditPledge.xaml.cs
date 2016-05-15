@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Data;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -12,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Data;
 using MahApps.Metro;
 using MahApps.Metro.Controls;
 using PrestamixC.dao;
@@ -19,39 +19,37 @@ using PrestamixC.dao;
 namespace PrestamixC
 {
     /// <summary>
-    /// Interaction logic for EditPawn.xaml
+    /// Interaction logic for EditPledge.xaml
     /// </summary>
-    public partial class EditPawn : MetroWindow
+    public partial class EditPledge : MetroWindow
     {
         private string m_ID = "-1";
         private DBAccess m_dba;
-        public EditPawn(string id)
+        public EditPledge(string id)
         {
+            InitializeComponent();
             InitializeComponent();
             m_ID = id;
             m_dba = null;
-            showPawnData();
+            showPledgeData();
         }
-        void showPawnData()
+        private void showPledgeData()
         {
             m_dba = new DBAccess();
-            DataTable m_dt = m_dba.SelectFromTable("Empenio", true, true, 4, "Monto", "Tipo", "Fecha", "Estado", "Id", m_ID);           
+            DataTable m_dt = m_dba.SelectFromTable("Prenda", true, true, 3, "Nombre", "Ubicacion", "Descripcion", "Id", m_ID);
             DataRow row = m_dt.Rows[0];
-            SumTextBox.Text = row["Monto"].ToString();
-            typeTextBox.Text = row["Tipo"].ToString();
-            mDateP.SelectedDate = DateTime.Parse(row["Fecha"].ToString());
-            StatusTextBox.Text = row["Estado"].ToString();
+            NameTextBox.Text = row["Nombre"].ToString();
+            LocationTextBox.Text = row["Ubicacion"].ToString();
+            DescriptionTextBox.Text = row["Descripcion"].ToString();          
             m_dba = null;
         }
-
         private void confirmB_Click(object sender, RoutedEventArgs e)
         {
             m_dba = new DBAccess();
-            m_dba.UpdateTable("Empenio", 4, "Monto", "Tipo", "Fecha", "Estado", SumTextBox.Text, typeTextBox.Text, mDateP.SelectedDate.ToString(), StatusTextBox.Text, m_ID); 
+            m_dba.UpdateTable("Prenda", 3, "Nombre", "Ubicacion", "Descripcion", NameTextBox.Text, LocationTextBox.Text, DescriptionTextBox.Text, m_ID);
             m_dba = null;
             Close();
         }
-
         private void cancelB_Click(object sender, RoutedEventArgs e)
         {
             m_ID = "-1";

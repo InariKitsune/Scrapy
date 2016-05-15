@@ -13,7 +13,6 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Data;
-using System.Data.SqlClient;
 using MahApps.Metro;
 using MahApps.Metro.Controls;
 using PrestamixC.dao;
@@ -28,8 +27,12 @@ namespace PrestamixC
     {
         private bool VentanaRegistrarEmpeñoAbierta = false;
         private bool VentanaEditarEmpeñoAbierta = false;
+        private bool VentanaEditarPrendaAbierta = false;
+        private bool VentanaEditarClienteAbierta = false;
         RegistrarEmpeño ventanaEmp;
         EditPawn ventanaEdt;
+        EditPledge ventanaEdt2;
+        EditCustomer ventanaEdt3;
         DBAccess m_dba;
         public MainWindow()
         {
@@ -90,19 +93,47 @@ namespace PrestamixC
                 ventanaEdt.Show();
             }
         }
-        private void EditPledge_Copy_Click(object sender, RoutedEventArgs e)
+        private void EditPledge_Click(object sender, RoutedEventArgs e)
         {
-
+            if (!VentanaEditarPrendaAbierta)
+            {
+                DataRowView drv = (DataRowView)PrendasDataGrid.SelectedItem;
+                String result = (drv["Id"]).ToString();//here we select a pawn's id from the datagrid
+                VentanaEditarPrendaAbierta = true;
+                ventanaEdt2 = new EditPledge(result);
+                ventanaEdt2.Closed += new EventHandler(EditPledge_Closed);
+                ventanaEdt2.Show();
+            }
         }
-        private void EditCustomer_Copy1_Click(object sender, RoutedEventArgs e)
+        private void EditCustomer_Click(object sender, RoutedEventArgs e)
         {
-
+            if (!VentanaEditarClienteAbierta)
+            {
+                DataRowView drv = (DataRowView)ClientesDataGrid.SelectedItem;
+                String result = (drv["Id"]).ToString();//here we select a pawn's id from the datagrid
+                VentanaEditarClienteAbierta = true;
+                ventanaEdt3 = new EditCustomer(result);
+                ventanaEdt3.Closed += new EventHandler(EditCustomer_Closed);
+                ventanaEdt3.Show();
+            }
         }
         private void EditPawn_Closed(object sender, EventArgs e)
         {
             VentanaEditarEmpeñoAbierta = false;
             ventanaEdt = null;
             MostrarEmpeños();
+        }
+        private void EditPledge_Closed(object sender, EventArgs e)
+        {
+            VentanaEditarPrendaAbierta = false;
+            ventanaEdt2 = null;
+            MostrarPrendas();
+        }
+        private void EditCustomer_Closed(object sender, EventArgs e)
+        {
+            VentanaEditarClienteAbierta = false;
+            ventanaEdt3 = null;
+            MostrarClientes();
         }
         private void RegistrarEmpeño_Closed(object sender, EventArgs e)
         {

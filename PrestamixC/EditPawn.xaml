@@ -4,18 +4,18 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:metro="http://metro.mahapps.com/winfx/xaml/controls"
         xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"        
-        Title="EditPawn" Height="295" Width="338" IsMaxRestoreButtonEnabled="False" Topmost="True">
+        Title="EditPawn" Height="295" Width="338" IsMaxRestoreButtonEnabled="False" Topmost="True" IsMinButtonEnabled="False">
     <Grid Margin="0,0,2,0">
-        <TextBox x:Name="SumTextBox" HorizontalAlignment="Left" Height="37" Margin="105,25,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="190"/>        
-        <TextBox x:Name="typeTextBox" HorizontalAlignment="Left" Height="37" Margin="105,67,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="190"/>
+        <TextBox x:Name="SumTextBox" HorizontalAlignment="Left" Height="37" Margin="105,25,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="190"/>
+        <TextBox x:Name="typeTextBox" HorizontalAlignment="Left" Height="37" Margin="105,67,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="190"/>
         <DatePicker x:Name="mDateP" HorizontalAlignment="Left" Margin="105,109,0,0" VerticalAlignment="Top" Width="190" Height="37"/>
-        <TextBox x:Name="StatusTextBox" HorizontalAlignment="Left" Height="37" Margin="105,151,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="190"/>       
+        <TextBox x:Name="StatusTextBox" HorizontalAlignment="Left" Height="37" Margin="105,151,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="190"/>
         <Label Content="Monto" HorizontalAlignment="Left" Margin="33,26,0,0" VerticalAlignment="Top" Width="67" Height="37"/>
         <Label Content="Tipo" HorizontalAlignment="Left" Margin="33,68,0,0" VerticalAlignment="Top" Width="67" Height="38"/>
         <Label Content="Fecha" HorizontalAlignment="Left" Margin="33,111,0,0" VerticalAlignment="Top" Width="67" Height="37"/>
         <Label Content="Estado" HorizontalAlignment="Left" Margin="33,152,0,0" VerticalAlignment="Top" Width="67" Height="37"/>
-        <Button x:Name="confirmB" Content="Confirmar" HorizontalAlignment="Left" Width="100" Margin="33,211,0,0" Click="confirmB_Click" Height="32" VerticalAlignment="Top"/>
-        <Button x:Name="cancelB" Content="Cancelar" HorizontalAlignment="Right" Width="100" Margin="0,211,33,0" Click="cancelB_Click" Height="32" VerticalAlignment="Top"/>
+        <Button x:Name="confirmB" Content="Confirmar" HorizontalAlignment="Left" Width="100" Margin="33,0,0,22" Click="confirmB_Click" Height="32" VerticalAlignment="Bottom"/>
+        <Button x:Name="cancelB" Content="Cancelar" HorizontalAlignment="Right" Width="100" Margin="0,0,33,22" Click="cancelB_Click" Height="32" VerticalAlignment="Bottom"/>
 
     </Grid>
 </Controls:MetroWindow>

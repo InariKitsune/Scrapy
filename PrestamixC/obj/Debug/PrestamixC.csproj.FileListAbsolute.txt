@@ -115,3 +115,7 @@ G:\PrestamixCv2.1\PrestamixCv2.1\PrestamixC\bin\Debug\MahApps.Metro.xml
 G:\PrestamixCv2.1\PrestamixCv2.1\PrestamixC\obj\Debug\App.baml
 G:\PrestamixCv2.1\PrestamixCv2.1\PrestamixC\bin\Debug\DB\Database1.mdf
 G:\PrestamixCv2.1\PrestamixCv2.1\PrestamixC\bin\Debug\DB\Database1_log.ldf
+G:\PrestamixCv2.1\PrestamixCv2.1\PrestamixC\obj\Debug\EditCustomer.baml
+G:\PrestamixCv2.1\PrestamixCv2.1\PrestamixC\obj\Debug\EditPledge.baml
+G:\PrestamixCv2.1\PrestamixCv2.1\PrestamixC\obj\Debug\EditCustomer.g.cs
+G:\PrestamixCv2.1\PrestamixCv2.1\PrestamixC\obj\Debug\EditPledge.g.cs

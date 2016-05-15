@@ -105,7 +105,7 @@
                             </TextBlock>
                         </DockPanel>
                     </Button>
-                    <Button x:Name="EditPledge_Copy" Margin="0,83,103,0" VerticalAlignment="Top" Height="33" RenderTransformOrigin="-1.16,2.091" HorizontalAlignment="Right" Width="125" Click="EditPledge_Copy_Click">
+                    <Button x:Name="EditPledge" Margin="0,83,103,0" VerticalAlignment="Top" Height="33" RenderTransformOrigin="-1.16,2.091" HorizontalAlignment="Right" Width="125" Click="EditPledge_Click">
                         <DockPanel HorizontalAlignment="Right" Width="91" Height="23">
                             <Image x:Name="editImage1" Source="img/editLight.png" Width="29" Margin="0,-13"/>
                             <TextBlock RenderTransformOrigin="0.476,0.48" Height="19" Margin="0,2" Width="49"><Run Text="Editar"/></TextBlock>
@@ -138,7 +138,7 @@
                             </TextBlock>
                         </DockPanel>
                     </Button>
-                    <Button x:Name="EditCustomer_Copy1" Margin="0,83,103,0" VerticalAlignment="Top" Height="33" RenderTransformOrigin="-1.16,2.091" HorizontalAlignment="Right" Width="125" Click="EditCustomer_Copy1_Click">
+                    <Button x:Name="EditCustomer" Margin="0,83,103,0" VerticalAlignment="Top" Height="33" RenderTransformOrigin="-1.16,2.091" HorizontalAlignment="Right" Width="125" Click="EditCustomer_Click">
                         <DockPanel HorizontalAlignment="Right" Width="91" Height="23">
                             <Image x:Name="editImage2" Source="img/editLight.png" Width="29" Margin="0,-13"/>
                             <TextBlock RenderTransformOrigin="0.476,0.48" Height="19" Margin="0,2" Width="49"><Run Text="Editar"/></TextBlock>
