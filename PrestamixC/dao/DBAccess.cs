@@ -122,5 +122,16 @@ namespace PrestamixC.dao
             command.Parameters.AddWithValue("@conn", values[values.Length - 1]);
             command.ExecuteNonQuery();
         }
+        public bool tableIsEmpty(string tablename)
+        {
+            string query = "SELECT COUNT(*) FROM " + tablename;            
+            SqlConnection connection = new SqlConnection(connectionString);
+            connection.Open();
+            String sql = string.Format(query);
+            SqlCommand command = new SqlCommand(sql, connection);            
+            int reader = Convert.ToInt32(command.ExecuteScalar());            
+            connection.Close();            
+            return reader == 0;
+        }
     }
 }

@@ -32,12 +32,23 @@ namespace PrestamixC
 
         private void ConfirmarEmpeñoBoton_Click(object sender, RoutedEventArgs e)
         {
-            m_dba = new DBAccess();          
-            m_dba.InsertIntoTable("Cliente", "Id", "Nombre", "ApellidoP", "ApellidoM", "Direccion", "Telefono", CiTextBox.Text, NombreTextBox.Text, ApellidoPaternoTextBox.Text, ApellidoMaternoTextBox.Text, DireccionTextBox.Text, TelefonoTextBox.Text);
-            m_dba.InsertIntoTable("Empenio", "Id", "IdCliente", "IdPrenda", "Monto", "Tipo", "Fecha", "Estado", IdEmpeñoTextBox.Text, CiTextBox.Text, IdPrendaTextBox.Text, MontoTextBox.Text, TipoTextBox.Text, FechaTextBox.SelectedDate.ToString(), "Vigente");
-            m_dba.InsertIntoTable("Prenda", "Id", "Nombre", "Ubicacion", "Descripcion", IdPrendaTextBox.Text, NombrePrendaTextBox.Text, UbicacionTextBox.Text, DescripcionTextBox.Text);
-            m_dba = null;
-            Close();
+            int i;
+            if (CiTextBox.Text != "" || IdEmpeñoTextBox.Text != "" || IdPrendaTextBox.Text != "")
+            {
+                if (int.TryParse(CiTextBox.Text, out i) && int.TryParse(IdEmpeñoTextBox.Text, out i) && int.TryParse(IdPrendaTextBox.Text, out i))
+                {
+                    m_dba = new DBAccess();
+                    m_dba.InsertIntoTable("Cliente", "Id", "Nombre", "ApellidoP", "ApellidoM", "Direccion", "Telefono", CiTextBox.Text, NombreTextBox.Text, ApellidoPaternoTextBox.Text, ApellidoMaternoTextBox.Text, DireccionTextBox.Text, TelefonoTextBox.Text);
+                    m_dba.InsertIntoTable("Empenio", "Id", "IdCliente", "IdPrenda", "Monto", "Tipo", "Fecha", "Estado", IdEmpeñoTextBox.Text, CiTextBox.Text, IdPrendaTextBox.Text, MontoTextBox.Text, TipoTextBox.Text, FechaTextBox.SelectedDate.ToString(), "Vigente");
+                    m_dba.InsertIntoTable("Prenda", "Id", "Nombre", "Ubicacion", "Descripcion", IdPrendaTextBox.Text, NombrePrendaTextBox.Text, UbicacionTextBox.Text, DescripcionTextBox.Text);
+                    m_dba = null;
+                    Close();
+                }
+                else
+                    MessageBox.Show("Los campos -C.I.-,-Id Prenda- e -Id Empeño- deben ser numéricos");
+            }
+            else
+                MessageBox.Show("Los campos -C.I.-,-Id Prenda- e -Id Empeño- no pueden ser vacios");
         }
         private void cancelB_Click(object sender, RoutedEventArgs e)
         {

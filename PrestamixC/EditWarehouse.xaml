@@ -4,7 +4,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:metro="http://metro.mahapps.com/winfx/xaml/controls"
         xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"   
-        Title="EditWarehouse" Height="362.7" Width="377">
+        Title="EditWarehouse" Height="362.7" Width="377" Topmost="True" IsMaxRestoreButtonEnabled="False" IsMinButtonEnabled="False">
     <Grid>
         <TextBox x:Name="NameTextBox" HorizontalAlignment="Left" Height="37" Margin="105,25,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="227"/>
         <TextBox x:Name="LocationTextBox" HorizontalAlignment="Left" Height="37" Margin="105,67,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="227"/>

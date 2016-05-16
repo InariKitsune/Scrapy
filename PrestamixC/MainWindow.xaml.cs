@@ -85,13 +85,20 @@ namespace PrestamixC
          */
         private void BotonRegistrarEmpeños_Click(object sender, RoutedEventArgs e)
         {
-            if (!VentanaRegistrarEmpeñoAbierta)
+            m_dba = new DBAccess();
+            if (!m_dba.tableIsEmpty("Warehouse"))
             {
-                VentanaRegistrarEmpeñoAbierta = true;
-                ventanaEmp = new RegistrarEmpeño();
-                ventanaEmp.Closed += new EventHandler(RegistrarEmpeño_Closed);
-                ventanaEmp.Show();
-            }               
+                if (!VentanaRegistrarEmpeñoAbierta)
+                {
+                    VentanaRegistrarEmpeñoAbierta = true;
+                    ventanaEmp = new RegistrarEmpeño();
+                    ventanaEmp.Closed += new EventHandler(RegistrarEmpeño_Closed);
+                    ventanaEmp.Show();
+                }
+            }
+            else
+                MessageBox.Show("Debe tener al menos un depósito registrado para poder realizar esta operación");
+            m_dba = null;
         }
         private void BotonRegistrarDeposito_Click(object sender, RoutedEventArgs e)
         {
@@ -108,11 +115,14 @@ namespace PrestamixC
             if (!VentanaEditarEmpeñoAbierta)
             {
                 DataRowView drv = (DataRowView)EmpeñosDataGrid.SelectedItem;
-                String result = (drv["Id"]).ToString();//here we select a pawn's id from the datagrid
-                VentanaEditarEmpeñoAbierta = true;
-                ventanaEdt = new EditPawn(result);
-                ventanaEdt.Closed += new EventHandler(EditPawn_Closed);
-                ventanaEdt.Show();
+                if (drv != null)
+                {
+                    String result = (drv["Id"]).ToString();//here we select a pawn's id from the datagrid
+                    VentanaEditarEmpeñoAbierta = true;
+                    ventanaEdt = new EditPawn(result);
+                    ventanaEdt.Closed += new EventHandler(EditPawn_Closed);
+                    ventanaEdt.Show();
+                }
             }
         }
         private void EditPledge_Click(object sender, RoutedEventArgs e)
@@ -120,23 +130,29 @@ namespace PrestamixC
             if (!VentanaEditarPrendaAbierta)
             {
                 DataRowView drv = (DataRowView)PrendasDataGrid.SelectedItem;
-                String result = (drv["Id"]).ToString();//here we select a pawn's id from the datagrid
-                VentanaEditarPrendaAbierta = true;
-                ventanaEdt2 = new EditPledge(result);
-                ventanaEdt2.Closed += new EventHandler(EditPledge_Closed);
-                ventanaEdt2.Show();
+                if (drv != null)
+                {
+                    String result = (drv["Id"]).ToString();//here we select a pawn's id from the datagrid
+                    VentanaEditarPrendaAbierta = true;
+                    ventanaEdt2 = new EditPledge(result);
+                    ventanaEdt2.Closed += new EventHandler(EditPledge_Closed);
+                    ventanaEdt2.Show();
+                }
             }
         }
         private void EditCustomer_Click(object sender, RoutedEventArgs e)
         {
             if (!VentanaEditarClienteAbierta)
             {
-                DataRowView drv = (DataRowView)ClientesDataGrid.SelectedItem;
-                String result = (drv["Id"]).ToString();//here we select a pawn's id from the datagrid
-                VentanaEditarClienteAbierta = true;
-                ventanaEdt3 = new EditCustomer(result);
-                ventanaEdt3.Closed += new EventHandler(EditCustomer_Closed);
-                ventanaEdt3.Show();
+                DataRowView drv = (DataRowView)ClientesDataGrid.SelectedItem;                
+                if (drv != null)
+                {
+                    String result = (drv["Id"]).ToString();//here we select a pawn's id from the datagrid
+                    VentanaEditarClienteAbierta = true;
+                    ventanaEdt3 = new EditCustomer(result);
+                    ventanaEdt3.Closed += new EventHandler(EditCustomer_Closed);
+                    ventanaEdt3.Show();
+                }
             }
         }
         private void EditSWarehouse_Click(object sender, RoutedEventArgs e)
@@ -144,11 +160,14 @@ namespace PrestamixC
             if (!VentanaEditarAlmacenAbierta)
             {
                 DataRowView drv = (DataRowView)AlmacenesDataGrid.SelectedItem;
-                String result = (drv["Id"]).ToString();//here we select a pawn's id from the datagrid
-                VentanaEditarAlmacenAbierta = true;
-                ventanaEdt4 = new EditWarehouse(result);
-                ventanaEdt4.Closed += new EventHandler(EditWarehouse_Closed);
-                ventanaEdt4.Show();
+                if (drv != null)
+                {
+                    String result = (drv["Id"]).ToString();//here we select a pawn's id from the datagrid
+                    VentanaEditarAlmacenAbierta = true;
+                    ventanaEdt4 = new EditWarehouse(result);
+                    ventanaEdt4.Closed += new EventHandler(EditWarehouse_Closed);
+                    ventanaEdt4.Show();
+                }
             }
         }
         private void EditPawn_Closed(object sender, EventArgs e)
@@ -193,34 +212,46 @@ namespace PrestamixC
         private void DeleteButton_Click(object sender, RoutedEventArgs e)//code for delete pawns
         {
             m_dba = new DBAccess();
-            DataRowView drv = (DataRowView)EmpeñosDataGrid.SelectedItem;                    
-            m_dba.DeleteFromTable("Empenio", (drv["Id"]).ToString());                       
-            m_dba = null;
-            MostrarEmpeños();
+            DataRowView drv = (DataRowView)EmpeñosDataGrid.SelectedItem;
+            if (drv != null)
+            {
+                m_dba.DeleteFromTable("Empenio", (drv["Id"]).ToString());
+                m_dba = null;
+                MostrarEmpeños();
+            }
         }
         private void DeletePledge_Click(object sender, RoutedEventArgs e)
         {
             m_dba = new DBAccess();
-            DataRowView drv = (DataRowView)PrendasDataGrid.SelectedItem;            
-            m_dba.DeleteFromTable("Prenda", (drv["Id"]).ToString());
-            m_dba = null;
-            MostrarPrendas();
+            DataRowView drv = (DataRowView)PrendasDataGrid.SelectedItem;
+            if (drv != null)
+            {
+                m_dba.DeleteFromTable("Prenda", (drv["Id"]).ToString());
+                m_dba = null;
+                MostrarPrendas();
+            }
         }        
         private void DeleteCustomer_Click(object sender, RoutedEventArgs e)
         {
             m_dba = new DBAccess();
             DataRowView drv = (DataRowView)ClientesDataGrid.SelectedItem;
-            m_dba.DeleteFromTable("Cliente", (drv["Id"]).ToString());
-            m_dba = null;
-            MostrarClientes();
+            if (drv != null)
+            {
+                m_dba.DeleteFromTable("Cliente", (drv["Id"]).ToString());
+                m_dba = null;
+                MostrarClientes();
+            }
         }
         private void DeleteWarehouseButton_Click(object sender, RoutedEventArgs e)
         {
             m_dba = new DBAccess();
             DataRowView drv = (DataRowView)AlmacenesDataGrid.SelectedItem;
-            m_dba.DeleteFromTable("Warehouse", (drv["Id"]).ToString());
-            m_dba = null;
-            MostrarAlmacenes();
+            if(drv != null)
+            {
+                m_dba.DeleteFromTable("Warehouse", (drv["Id"]).ToString());
+                m_dba = null;
+                MostrarAlmacenes();
+            }
         }
         /*
          *SEARCH

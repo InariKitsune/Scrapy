@@ -30,10 +30,21 @@ namespace PrestamixC
         }
         private void ConfirmarEmpeñoBoton_Click(object sender, RoutedEventArgs e)
         {
-            m_dba = new DBAccess();
-            m_dba.InsertIntoTable("Warehouse", "Id", "Nombre", "Direccion", "Estado", "Descripcion", IdAlmacen.Text, NombreAlmacen.Text, DireccionTextBox.Text, "Vacio", DescripcionTextBox.Text);            
-            m_dba = null;
-            Close();
+            int i;
+            if (IdAlmacen.Text != "")
+            {
+                if(int.TryParse(IdAlmacen.Text, out i))
+                {
+                    m_dba = new DBAccess();
+                    m_dba.InsertIntoTable("Warehouse", "Id", "Nombre", "Direccion", "Estado", "Descripcion", IdAlmacen.Text, NombreAlmacen.Text, DireccionTextBox.Text, "Vacio", DescripcionTextBox.Text);
+                    m_dba = null;
+                    Close();
+                }
+                else                
+                    MessageBox.Show("El valor ingresado en el campo -Número de almacen- es inválido");                              
+            }
+            else
+                MessageBox.Show("El campo -Número del almacen- no puede ser vacio");
         }
         private void cancelB_Click(object sender, RoutedEventArgs e)
         {
