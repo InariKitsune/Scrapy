@@ -119,3 +119,7 @@ G:\PrestamixCv2.1\PrestamixCv2.1\PrestamixC\obj\Debug\EditCustomer.baml
 G:\PrestamixCv2.1\PrestamixCv2.1\PrestamixC\obj\Debug\EditPledge.baml
 G:\PrestamixCv2.1\PrestamixCv2.1\PrestamixC\obj\Debug\EditCustomer.g.cs
 G:\PrestamixCv2.1\PrestamixCv2.1\PrestamixC\obj\Debug\EditPledge.g.cs
+G:\PrestamixCv2.1\PrestamixCv2.1\PrestamixC\obj\Debug\AddWarehouse.baml
+G:\PrestamixCv2.1\PrestamixCv2.1\PrestamixC\obj\Debug\AddWarehouse.g.cs
+G:\PrestamixCv2.1\PrestamixCv2.1\PrestamixC\obj\Debug\EditWarehouse.baml
+G:\PrestamixCv2.1\PrestamixCv2.1\PrestamixC\obj\Debug\EditWarehouse.g.cs

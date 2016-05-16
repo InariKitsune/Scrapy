@@ -19,33 +19,34 @@ using PrestamixC.dao;
 namespace PrestamixC
 {
     /// <summary>
-    /// Interaction logic for EditPledge.xaml
+    /// Interaction logic for EditWarehouse.xaml
     /// </summary>
-    public partial class EditPledge : MetroWindow
+    public partial class EditWarehouse : MetroWindow
     {
         private string m_ID = "-1";
         private DBAccess m_dba;
-        public EditPledge(string id)
+        public EditWarehouse(string id)
         {
-            InitializeComponent();            
+            InitializeComponent();
             m_ID = id;
             m_dba = null;
-            showPledgeData();
+            showWarehouseData();
         }
-        private void showPledgeData()
+        private void showWarehouseData()
         {
             m_dba = new DBAccess();
-            DataTable m_dt = m_dba.SelectFromTable("Prenda", true, true, 3, "Nombre", "Ubicacion", "Descripcion", "Id", m_ID);
+            DataTable m_dt = m_dba.SelectFromTable("Warehouse", true, true, 4, "Nombre", "Direccion", "Estado", "Descripcion", "Id", m_ID);
             DataRow row = m_dt.Rows[0];
             NameTextBox.Text = row["Nombre"].ToString();
-            LocationTextBox.Text = row["Ubicacion"].ToString();
-            DescriptionTextBox.Text = row["Descripcion"].ToString();          
+            LocationTextBox.Text = row["Direccion"].ToString();
+            statusTextBox.Text = row["Estado"].ToString();
+            DescriptionTextBox.Text = row["Descripcion"].ToString();
             m_dba = null;
         }
         private void confirmB_Click(object sender, RoutedEventArgs e)
         {
             m_dba = new DBAccess();
-            m_dba.UpdateTable("Prenda", 3, "Nombre", "Ubicacion", "Descripcion", NameTextBox.Text, LocationTextBox.Text, DescriptionTextBox.Text, m_ID);
+            m_dba.UpdateTable("Warehouse", 4, "Nombre", "Direccion", "Estado", "Descripcion", NameTextBox.Text, LocationTextBox.Text, statusTextBox.Text ,DescriptionTextBox.Text, m_ID);
             m_dba = null;
             Close();
         }

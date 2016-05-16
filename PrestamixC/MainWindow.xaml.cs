@@ -29,20 +29,25 @@ namespace PrestamixC
         private bool VentanaEditarEmpeñoAbierta = false;
         private bool VentanaEditarPrendaAbierta = false;
         private bool VentanaEditarClienteAbierta = false;
+        private bool VentanaRegistrarAlmacenAbierta = false;
+        private bool VentanaEditarAlmacenAbierta = false;
         RegistrarEmpeño ventanaEmp;
         EditPawn ventanaEdt;
         EditPledge ventanaEdt2;
         EditCustomer ventanaEdt3;
+        AddWarehouse ventanaWh;
+        EditWarehouse ventanaEdt4;
         DBAccess m_dba;
         public MainWindow()
         {
             InitializeComponent();
             m_dba = null;
             ventanaEmp = null;
-            ventanaEdt = null; 
-            MostrarEmpeños();
-            MostrarPrendas();
-            MostrarClientes();                       
+            ventanaEdt = null;
+            ventanaEdt2 = null;
+            ventanaEdt3 = null;
+            ventanaWh = null;
+            MostrarEmpeños();                                
         }
         /*
          *SHOW TABLES FROM DB
@@ -67,7 +72,14 @@ namespace PrestamixC
             DataTable m_dt = m_dba.SelectFromTable("Prenda", false, false, 0);
             PrendasDataGrid.ItemsSource = m_dt.DefaultView;
             m_dba = null;
-        }        
+        }
+        void MostrarAlmacenes()
+        {
+            m_dba = new DBAccess();
+            DataTable m_dt = m_dba.SelectFromTable("Warehouse", false, false, 0);
+            AlmacenesDataGrid.ItemsSource = m_dt.DefaultView;
+            m_dba = null;
+        }
         /*
          *OTHER WINDOWS
          */
@@ -80,6 +92,16 @@ namespace PrestamixC
                 ventanaEmp.Closed += new EventHandler(RegistrarEmpeño_Closed);
                 ventanaEmp.Show();
             }               
+        }
+        private void BotonRegistrarDeposito_Click(object sender, RoutedEventArgs e)
+        {
+            if (!VentanaRegistrarAlmacenAbierta)
+            {
+                VentanaRegistrarAlmacenAbierta = true;
+                ventanaWh = new AddWarehouse();
+                ventanaWh.Closed += new EventHandler(AddWarehouse_Closed);
+                ventanaWh.Show();
+            }
         }
         private void EditSPawn_Click(object sender, RoutedEventArgs e)
         {
@@ -117,6 +139,18 @@ namespace PrestamixC
                 ventanaEdt3.Show();
             }
         }
+        private void EditSWarehouse_Click(object sender, RoutedEventArgs e)
+        {
+            if (!VentanaEditarAlmacenAbierta)
+            {
+                DataRowView drv = (DataRowView)AlmacenesDataGrid.SelectedItem;
+                String result = (drv["Id"]).ToString();//here we select a pawn's id from the datagrid
+                VentanaEditarAlmacenAbierta = true;
+                ventanaEdt4 = new EditWarehouse(result);
+                ventanaEdt4.Closed += new EventHandler(EditWarehouse_Closed);
+                ventanaEdt4.Show();
+            }
+        }
         private void EditPawn_Closed(object sender, EventArgs e)
         {
             VentanaEditarEmpeñoAbierta = false;
@@ -141,6 +175,18 @@ namespace PrestamixC
             ventanaEmp = null;
             MostrarEmpeños();
         }        
+        private void AddWarehouse_Closed(object sender, EventArgs e)
+        {
+            VentanaRegistrarAlmacenAbierta = false;
+            ventanaWh = null;
+            MostrarAlmacenes();
+        }        
+        private void EditWarehouse_Closed(object sender, EventArgs e)
+        {
+            VentanaEditarAlmacenAbierta = false;
+            ventanaEdt4 = null;
+            MostrarAlmacenes();
+        }
         /*
          *DELETE
          */
@@ -167,6 +213,14 @@ namespace PrestamixC
             m_dba.DeleteFromTable("Cliente", (drv["Id"]).ToString());
             m_dba = null;
             MostrarClientes();
+        }
+        private void DeleteWarehouseButton_Click(object sender, RoutedEventArgs e)
+        {
+            m_dba = new DBAccess();
+            DataRowView drv = (DataRowView)AlmacenesDataGrid.SelectedItem;
+            m_dba.DeleteFromTable("Warehouse", (drv["Id"]).ToString());
+            m_dba = null;
+            MostrarAlmacenes();
         }
         /*
          *SEARCH
@@ -240,6 +294,29 @@ namespace PrestamixC
             ClientesDataGrid.ItemsSource = m_dt.DefaultView;
             m_dba = null;
         }
+        private void warehouseSearchButton_Click(object sender, RoutedEventArgs e)
+        {
+            string category = "";
+            switch (WarehouseSearchCategory.SelectedIndex)
+            {
+                case 0:
+                    category = "Id";
+                    break;
+                case 1:
+                    category = "Nombre";
+                    break;
+                case 2:
+                    category = "Direccion";
+                    break;
+                case 3:
+                    category = "Estado";
+                    break;
+            }
+            m_dba = new DBAccess();
+            DataTable m_dt = m_dba.SelectFromTable("Warehouse", false, true, 0, category, WarehouseSearchCriteria.Text);
+            AlmacenesDataGrid.ItemsSource = m_dt.DefaultView;
+            m_dba = null;
+        }       
         /*
          *TAB CONTROL
          */
@@ -256,6 +333,10 @@ namespace PrestamixC
         private void pawnsTab_Selected(object sender, RoutedEventArgs e)
         {
             MostrarEmpeños();            
+        }
+        private void warehouseTab_Selected(object sender, RoutedEventArgs e)
+        {
+            MostrarAlmacenes();
         }
         /*
          *THEME SELECTOR
@@ -454,6 +535,6 @@ namespace PrestamixC
             }
            
             ((App)Application.Current).ChangeTheme(uri1, uri2);            
-        }
+        }        
     }
 }
