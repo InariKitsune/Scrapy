@@ -259,6 +259,7 @@ namespace PrestamixC
         private void pawnSearchButton_Click(object sender, RoutedEventArgs e)
         {
             string category="";
+            int i;
             switch(pawnSearchCategory.SelectedIndex)
             {
                 case 0:
@@ -280,14 +281,23 @@ namespace PrestamixC
                     category = "Estado";
                     break;                
             }
-            m_dba = new DBAccess();
-            DataTable m_dt = m_dba.SelectFromTable("Empenio", false, true, 0, category, pawnSearchCriteria.Text);
-            EmpeñosDataGrid.ItemsSource = m_dt.DefaultView;
-            m_dba = null;
+            if (category != "" && pawnSearchCriteria.Text != "")
+            {
+                if (category == "Id" && int.TryParse(pawnSearchCriteria.Text, out i))
+                {
+                    m_dba = new DBAccess();
+                    DataTable m_dt = m_dba.SelectFromTable("Empenio", false, true, 0, category, pawnSearchCriteria.Text);
+                    EmpeñosDataGrid.ItemsSource = m_dt.DefaultView;
+                    m_dba = null;
+                }
+            }
+            else
+                MostrarEmpeños();
         }
         private void pledgeSearchButton_Click(object sender, RoutedEventArgs e)
         {
             string category = "";
+            int i;
             switch (pledgeSearchCaterogy.SelectedIndex)
             {
                 case 0:
@@ -300,14 +310,23 @@ namespace PrestamixC
                     category = "Ubicacion";
                     break;                
             }
-            m_dba = new DBAccess();
-            DataTable m_dt = m_dba.SelectFromTable("Prenda", false, true, 0, category, pledgeSearchCriteria.Text);
-            PrendasDataGrid.ItemsSource = m_dt.DefaultView;
-            m_dba = null;
+            if (category != "" && pledgeSearchCriteria.Text != "")
+            {
+                if (category == "Id" && int.TryParse(pledgeSearchCriteria.Text, out i))
+                {
+                    m_dba = new DBAccess();
+                    DataTable m_dt = m_dba.SelectFromTable("Prenda", false, true, 0, category, pledgeSearchCriteria.Text);
+                    PrendasDataGrid.ItemsSource = m_dt.DefaultView;
+                    m_dba = null;
+                }
+            }
+            else
+                MostrarPrendas();
         }
         private void customerSearchButton_Click(object sender, RoutedEventArgs e)
         {
             string category = "";
+            int i;
             switch (customerSearchCategory.SelectedIndex)
             {
                 case 0:
@@ -320,14 +339,23 @@ namespace PrestamixC
                     category = "ApellidoP";
                     break;               
             }
-            m_dba = new DBAccess();
-            DataTable m_dt = m_dba.SelectFromTable("Cliente", false, true, 0, category, customerSearchCriteria.Text);
-            ClientesDataGrid.ItemsSource = m_dt.DefaultView;
-            m_dba = null;
+            if (category != "" && customerSearchCriteria.Text != "")
+            {
+                if (category == "Id" && int.TryParse(customerSearchCriteria.Text, out i))
+                {
+                    m_dba = new DBAccess();
+                    DataTable m_dt = m_dba.SelectFromTable("Cliente", false, true, 0, category, customerSearchCriteria.Text);
+                    ClientesDataGrid.ItemsSource = m_dt.DefaultView;
+                    m_dba = null;
+                }
+            }
+            else
+                MostrarClientes();
         }
         private void warehouseSearchButton_Click(object sender, RoutedEventArgs e)
         {
             string category = "";
+            int i;
             switch (WarehouseSearchCategory.SelectedIndex)
             {
                 case 0:
@@ -343,10 +371,18 @@ namespace PrestamixC
                     category = "Estado";
                     break;
             }
-            m_dba = new DBAccess();
-            DataTable m_dt = m_dba.SelectFromTable("Warehouse", false, true, 0, category, WarehouseSearchCriteria.Text);
-            AlmacenesDataGrid.ItemsSource = m_dt.DefaultView;
-            m_dba = null;
+            if (category != "" && WarehouseSearchCriteria.Text != "")
+            {
+                if (category == "Id" && int.TryParse(WarehouseSearchCriteria.Text, out i))
+                {
+                    m_dba = new DBAccess();
+                    DataTable m_dt = m_dba.SelectFromTable("Warehouse", false, true, 0, category, WarehouseSearchCriteria.Text);
+                    AlmacenesDataGrid.ItemsSource = m_dt.DefaultView;
+                    m_dba = null;
+                }
+            }
+            else
+                MostrarAlmacenes();
         }       
         /*
          *TAB CONTROL
