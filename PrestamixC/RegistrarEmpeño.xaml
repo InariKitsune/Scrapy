@@ -15,24 +15,24 @@
         <TextBox x:Name="ApellidoPaternoTextBox" HorizontalAlignment="Left" Height="36" Margin="359,53,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="174"/>
         <TextBox x:Name="ApellidoMaternoTextBox" HorizontalAlignment="Left" Height="36" Margin="664,53,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="174"/>
         <TextBox x:Name="CiTextBox" HorizontalAlignment="Left" Height="37" Margin="69,94,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="163"/>
-        <TextBox x:Name="DireccionTextBox" HorizontalAlignment="Left" Height="37" Margin="359,94,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="174"/>        
+        <TextBox x:Name="DireccionTextBox" HorizontalAlignment="Left" Height="37" Margin="359,94,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="174"/>
         <TextBox x:Name="TelefonoTextBox" HorizontalAlignment="Left" Height="37" Margin="664,94,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="174"/>
         <TextBox x:Name="NombrePrendaTextBox" HorizontalAlignment="Left" Height="37" Margin="138,179,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="163"/>
         <TextBox x:Name="IdPrendaTextBox" HorizontalAlignment="Left" Height="37" Margin="138,221,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="163"/>
-        <TextBox x:Name="UbicacionTextBox" HorizontalAlignment="Left" Height="37" Margin="138,263,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="163"/>
+        <ComboBox x:Name="WarehouseComboBox" HorizontalAlignment="Left" Margin="138,263,0,0" VerticalAlignment="Top" Width="163" Height="37"/>
         <TextBox x:Name="DescripcionTextBox" Height="79" Margin="371,221,59,0" TextWrapping="Wrap" VerticalAlignment="Top" Background="#FFE2E2E2"/>
-        <TextBox x:Name="IdEmpeñoTextBox" HorizontalAlignment="Left" Height="37" Margin="85,348,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>        
+        <TextBox x:Name="IdEmpeñoTextBox" HorizontalAlignment="Left" Height="37" Margin="85,348,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
         <TextBox x:Name="MontoTextBox" HorizontalAlignment="Left" Height="38" Margin="321,348,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="TipoTextBox" HorizontalAlignment="Left" Height="38" Margin="511,347,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="54"/>        
+        <TextBox x:Name="TipoTextBox" HorizontalAlignment="Left" Height="38" Margin="511,347,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="54"/>
         <DatePicker x:Name="FechaTextBox" HorizontalAlignment="Left" Margin="668,348,0,0" VerticalAlignment="Top" Width="120" Height="37"/>
         <Button x:Name="ConfirmarEmpeñoBoton" Content="Confirmar" HorizontalAlignment="Left" Margin="148,0,0,10" Width="100" Height="32" RenderTransformOrigin="0.063,0.538" Click="ConfirmarEmpeñoBoton_Click" VerticalAlignment="Bottom"/>
         <Button x:Name="cancelB" Content="Cancelar" HorizontalAlignment="Right" Width="100" Margin="0,0,148,10" Click="cancelB_Click" Height="32" VerticalAlignment="Bottom"/>
         <Label x:Name="PrendaLabel" Content="Nombre de la prenda" HorizontalAlignment="Left" Margin="13,190,0,0" VerticalAlignment="Top" Width="126" RenderTransformOrigin="-0.306,0.385" Height="26"/>
         <Label x:Name="DescripcionLabel" Content="Descripción" HorizontalAlignment="Left" Margin="371,190,0,0" VerticalAlignment="Top" Width="93" RenderTransformOrigin="0.565,1.269" Height="26"/>
-        <Label x:Name="UbicacionLabel" Content="Ubicación" HorizontalAlignment="Left" Margin="13,274,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.237,-0.346" Width="93" Height="26"/>       
-        <Label x:Name="MontoLabel" Content="Monto" HorizontalAlignment="Left" Margin="265,360,0,0" VerticalAlignment="Top" Height="26" Width="46"/>        
-        <Label x:Name="TipoLabel" Content="Moneda" HorizontalAlignment="Left" Margin="451,360,0,0" VerticalAlignment="Top" Height="26" Width="55"/>        
-        <Label x:Name="IdPrendaLabel" Content="Id Prenda" HorizontalAlignment="Left" Margin="13,232,0,0" VerticalAlignment="Top" Width="67" Height="26"/>        
+        <Label x:Name="UbicacionLabel" Content="Ubicación" HorizontalAlignment="Left" Margin="13,274,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.237,-0.346" Width="93" Height="26"/>
+        <Label x:Name="MontoLabel" Content="Monto" HorizontalAlignment="Left" Margin="265,360,0,0" VerticalAlignment="Top" Height="26" Width="46"/>
+        <Label x:Name="TipoLabel" Content="Moneda" HorizontalAlignment="Left" Margin="451,360,0,0" VerticalAlignment="Top" Height="26" Width="55"/>
+        <Label x:Name="IdPrendaLabel" Content="Id Prenda" HorizontalAlignment="Left" Margin="13,232,0,0" VerticalAlignment="Top" Width="67" Height="26"/>
         <Label Content="Fecha" HorizontalAlignment="Left" Margin="622,359,0,0" VerticalAlignment="Top" Height="26" Width="41"/>
         <Label x:Name="IdEmpeñoLabel" Content="Id Empeño" HorizontalAlignment="Left" Margin="13,359,0,0" VerticalAlignment="Top" Height="26" Width="67"/>
         <Label Content="Cliente" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="38" Width="206" FontSize="22" FontWeight="Bold"/>
