@@ -48,7 +48,7 @@ namespace PrestamixC
                     m_dba = new DBAccess();
                     m_dba.InsertIntoTable("Cliente", "Id", "Nombre", "ApellidoP", "ApellidoM", "Direccion", "Telefono", CiTextBox.Text, NombreTextBox.Text, ApellidoPaternoTextBox.Text, ApellidoMaternoTextBox.Text, DireccionTextBox.Text, TelefonoTextBox.Text);
                     m_dba.InsertIntoTable("Empenio", "Id", "IdCliente", "IdPrenda", "Monto", "Tipo", "Fecha", "Estado", IdEmpeñoTextBox.Text, CiTextBox.Text, IdPrendaTextBox.Text, MontoTextBox.Text, TipoTextBox.Text, FechaTextBox.SelectedDate.ToString(), "Vigente");
-                    m_dba.InsertIntoTable("Prenda", "Id", "Nombre", "Ubicacion", "Descripcion", IdPrendaTextBox.Text, NombrePrendaTextBox.Text, WarehouseComboBox.SelectedItem.ToString(), DescripcionTextBox.Text);
+                    m_dba.InsertIntoTable("Prenda", "Id", "Nombre", "Ubicacion", "Descripcion", IdPrendaTextBox.Text, NombrePrendaTextBox.Text, WarehouseComboBox.Text, DescripcionTextBox.Text);
                     m_dba = null;
                     Close();
                 }
