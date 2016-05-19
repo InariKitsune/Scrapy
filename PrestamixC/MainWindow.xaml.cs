@@ -55,7 +55,7 @@ namespace PrestamixC
         void MostrarEmpeños()
         {
             m_dba = new DBAccess();
-            DataTable m_dt = m_dba.SelectFromTable("Empenio", false, false, 0);
+            DataTable m_dt = m_dba.SelectFromTable("Empenio", false, false, 0);            
             EmpeñosDataGrid.ItemsSource = m_dt.DefaultView;
             m_dba = null;
         }

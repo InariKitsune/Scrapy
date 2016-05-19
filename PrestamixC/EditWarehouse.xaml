@@ -6,10 +6,10 @@
         xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"   
         Title="EditWarehouse" Height="362.7" Width="377" Topmost="True" IsMaxRestoreButtonEnabled="False" IsMinButtonEnabled="False">
     <Grid>
-        <TextBox x:Name="NameTextBox" HorizontalAlignment="Left" Height="37" Margin="105,25,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="227"/>
-        <TextBox x:Name="LocationTextBox" HorizontalAlignment="Left" Height="37" Margin="105,67,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="227"/>
-        <TextBox x:Name="statusTextBox" HorizontalAlignment="Left" Height="37" Margin="105,109,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="227"/>
-        <TextBox x:Name="DescriptionTextBox" Height="79" Margin="33,190,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Background="#FFE2E2E2" HorizontalAlignment="Left" Width="299"/>
+        <TextBox x:Name="NameTextBox" HorizontalAlignment="Left" Height="37" Margin="105,25,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="227" MaxLength="50"/>
+        <TextBox x:Name="LocationTextBox" HorizontalAlignment="Left" Height="37" Margin="105,67,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="227" MaxLength="50"/>
+        <TextBox x:Name="statusTextBox" HorizontalAlignment="Left" Height="37" Margin="105,109,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="227" MaxLength="50"/>
+        <TextBox x:Name="DescriptionTextBox" Height="79" Margin="33,190,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Background="#FFE2E2E2" HorizontalAlignment="Left" Width="299" MaxLength="50"/>
         <Label Content="Nombre" HorizontalAlignment="Left" Margin="33,26,0,0" VerticalAlignment="Top" Width="67" Height="37"/>
         <Label Content="Dirección" HorizontalAlignment="Left" Margin="33,68,0,0" VerticalAlignment="Top" Width="67" Height="38"/>
         <Label Content="Descripción" HorizontalAlignment="Left" Margin="33,153,0,0" VerticalAlignment="Top" Width="72" Height="37"/>

@@ -5,6 +5,7 @@ using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Globalization;
 
 namespace PrestamixC
 {
@@ -13,6 +14,7 @@ namespace PrestamixC
     /// </summary>
     public partial class App : Application
     {
+        public string currentDateTimeFormat = CultureInfo.CurrentCulture.DateTimeFormat.ShortDatePattern +" "+ CultureInfo.CurrentCulture.DateTimeFormat.LongTimePattern;
         public void ChangeTheme(Uri newUri, Uri newUri2)
         {
             ResourceDictionary resourceDict1 = Application.LoadComponent(new Uri(@"/MahApps.Metro;component/Styles/Controls.xaml", UriKind.Relative)) as ResourceDictionary;

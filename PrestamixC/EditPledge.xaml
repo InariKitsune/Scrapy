@@ -6,9 +6,9 @@
         xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
         Title="EditPledge" Height="346" Width="345" Topmost="True" IsMaxRestoreButtonEnabled="False" IsMinButtonEnabled="False">
     <Grid>
-        <TextBox x:Name="NameTextBox" HorizontalAlignment="Left" Height="37" Margin="105,25,-3,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="190"/>
-        <TextBox x:Name="LocationTextBox" HorizontalAlignment="Left" Height="37" Margin="105,67,-3,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="190"/>
-        <TextBox x:Name="DescriptionTextBox" Height="79" Margin="33,147,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Background="#FFE2E2E2" HorizontalAlignment="Left" Width="262"/>
+        <TextBox x:Name="NameTextBox" HorizontalAlignment="Left" Height="37" Margin="105,25,-3,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="190" MaxLength="50"/>
+        <TextBox x:Name="LocationTextBox" HorizontalAlignment="Left" Height="37" Margin="105,67,-3,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="190" MaxLength="50"/>
+        <TextBox x:Name="DescriptionTextBox" Height="79" Margin="33,147,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Background="#FFE2E2E2" HorizontalAlignment="Left" Width="262" MaxLength="255"/>
         <Label Content="Nombre" HorizontalAlignment="Left" Margin="33,26,0,0" VerticalAlignment="Top" Width="67" Height="37"/>
         <Label Content="Ubicación" HorizontalAlignment="Left" Margin="33,68,0,0" VerticalAlignment="Top" Width="67" Height="38"/>
         <Label Content="Descripción" HorizontalAlignment="Left" Margin="33,110,0,0" VerticalAlignment="Top" Width="72" Height="37"/>
