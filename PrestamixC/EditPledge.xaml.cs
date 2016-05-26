@@ -45,7 +45,7 @@ namespace PrestamixC
         private void confirmB_Click(object sender, RoutedEventArgs e)
         {
             m_dba = new DBAccess();
-            m_dba.UpdateTable("Prenda", 3, "Nombre", "Ubicacion", "Descripcion", NameTextBox.Text, LocationTextBox.Text, DescriptionTextBox.Text, m_ID);
+            m_dba.UpdateTable("Prenda", 3, "Nombre", "Ubicacion", "Descripcion", "Id", NameTextBox.Text, LocationTextBox.Text, DescriptionTextBox.Text, m_ID);
             m_dba = null;
             Close();
         }

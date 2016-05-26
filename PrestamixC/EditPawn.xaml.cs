@@ -12,6 +12,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Globalization;
 using MahApps.Metro;
 using MahApps.Metro.Controls;
 using PrestamixC.dao;
@@ -47,7 +48,7 @@ namespace PrestamixC
         private void confirmB_Click(object sender, RoutedEventArgs e)
         {
             m_dba = new DBAccess();
-            m_dba.UpdateTable("Empenio", 4, "Monto", "Tipo", "Fecha", "Estado", SumTextBox.Text, typeTextBox.Text, mDateP.SelectedDate.ToString(), StatusTextBox.Text, m_ID); 
+            m_dba.UpdateTable("Empenio", 4, "Monto", "Tipo", "Fecha", "Estado", "Id", SumTextBox.Text, typeTextBox.Text, DateTime.ParseExact(mDateP.SelectedDate.ToString(), (Application.Current as PrestamixC.App).currentDateTimeFormat, CultureInfo.InvariantCulture).ToString("M/d/yyyy h:mm:ss tt"), StatusTextBox.Text, m_ID); 
             m_dba = null;
             Close();
         }

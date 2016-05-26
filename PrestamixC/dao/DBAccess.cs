@@ -108,12 +108,12 @@ namespace PrestamixC.dao
                 if (i < nColums - 1)
                     query = query + ", ";
             }
-            query = query + " WHERE Id=@conn";            
+            query = query + " WHERE "+values[nColums]+"=@conn";            
             connection.Open();
             String sql1 = string.Format(query);
             SqlCommand command = new SqlCommand(sql1, connection);
             int j = 0;
-            for (int i = nColums; i < nColums*2; i++)
+            for (int i = nColums + 1; i < values.Length; i++)
             {
                 string inParam = "@dat" + j;
                 j++;
