@@ -48,7 +48,8 @@ namespace PrestamixC
             ventanaEdt2 = null;
             ventanaEdt3 = null;
             ventanaWh = null;
-            MostrarEmpeños();                               
+            updatePawnsStatus();
+            MostrarEmpeños();            
         }
         /*
          *SHOW TABLES FROM DB
@@ -56,10 +57,10 @@ namespace PrestamixC
         void updatePawnsStatus()
         {
             DateTime TwomonthsAgo = DateTime.Now.AddDays(-60);
-            DateTime AlmostTwomonthsAgo = DateTime.Now.AddDays(-60);
+            DateTime AlmostTwomonthsAgo = DateTime.Now.AddDays(-50);
             m_dba = new DBAccess();
             m_dba.UpdateTable("Empenio", 1, "Estado", "Fecha", "Caducado", DateTime.ParseExact(TwomonthsAgo.ToString(), (Application.Current as PrestamixC.App).currentDateTimeFormat, CultureInfo.InvariantCulture).ToString("M/d/yyyy h:mm:ss tt"));
-            m_dba.UpdateTable("Empenio", 1, "Estado", "Fecha", "Caducado", DateTime.ParseExact(AlmostTwomonthsAgo.ToString(), (Application.Current as PrestamixC.App).currentDateTimeFormat, CultureInfo.InvariantCulture).ToString("M/d/yyyy h:mm:ss tt"));
+            m_dba.UpdateTable("Empenio", 1, "Estado", "Fecha", "Proximo a caducar", DateTime.ParseExact(AlmostTwomonthsAgo.ToString(), (Application.Current as PrestamixC.App).currentDateTimeFormat, CultureInfo.InvariantCulture).ToString("M/d/yyyy h:mm:ss tt"));
             m_dba = null;
         }
         /*
