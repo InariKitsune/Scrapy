@@ -32,6 +32,7 @@ namespace PrestamixC
         private bool VentanaEditarClienteAbierta = false;
         private bool VentanaRegistrarAlmacenAbierta = false;
         private bool VentanaEditarAlmacenAbierta = false;
+        private bool showPawns;
         RegistrarEmpeño ventanaEmp;
         EditPawn ventanaEdt;
         EditPledge ventanaEdt2;
@@ -48,20 +49,34 @@ namespace PrestamixC
             ventanaEdt2 = null;
             ventanaEdt3 = null;
             ventanaWh = null;
-            updatePawnsStatus();
-            MostrarEmpeños();            
+            if (updatePawnsStatus())
+                showPawns = false;               
         }
         /*
          *SHOW TABLES FROM DB
          */
-        void updatePawnsStatus()
+        bool updatePawnsStatus()
         {
             DateTime TwomonthsAgo = DateTime.Now.AddDays(-60);
             DateTime AlmostTwomonthsAgo = DateTime.Now.AddDays(-50);
             m_dba = new DBAccess();
-            m_dba.UpdateTable("Empenio", 1, "Estado", "Fecha", "Caducado", DateTime.ParseExact(TwomonthsAgo.ToString(), (Application.Current as PrestamixC.App).currentDateTimeFormat, CultureInfo.InvariantCulture).ToString("M/d/yyyy h:mm:ss tt"));
-            m_dba.UpdateTable("Empenio", 1, "Estado", "Fecha", "Proximo a caducar", DateTime.ParseExact(AlmostTwomonthsAgo.ToString(), (Application.Current as PrestamixC.App).currentDateTimeFormat, CultureInfo.InvariantCulture).ToString("M/d/yyyy h:mm:ss tt"));
+            int proximos = m_dba.UpdateTable("Empenio", 1, "Estado", "Fecha", "Proximo a caducar", DateTime.ParseExact(AlmostTwomonthsAgo.ToString(), (Application.Current as PrestamixC.App).currentDateTimeFormat, CultureInfo.InvariantCulture).ToString("M/d/yyyy h:mm:ss tt"), "<=");
+            m_dba.UpdateTable("Empenio", 1, "Estado", "Fecha", "Caducado", DateTime.ParseExact(TwomonthsAgo.ToString(), (Application.Current as PrestamixC.App).currentDateTimeFormat, CultureInfo.InvariantCulture).ToString("M/d/yyyy h:mm:ss tt"),"<=");
+            if (proximos > 0)
+            { 
+                if (MessageBox.Show("Hay " + proximos + "empeños que estan a punto de caducar o ya han caducado , quiere ver cuales son?", "Question", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.No)
+                {
+                    m_dba = null;
+                    return false;
+                }
+                else
+                {
+                    DataTable m_dt = m_dba.SelectFromTable("Empenio", false, true, 0, "Fecha", DateTime.ParseExact(AlmostTwomonthsAgo.ToString(), (Application.Current as PrestamixC.App).currentDateTimeFormat, CultureInfo.InvariantCulture).ToString("M/d/yyyy h:mm:ss tt"), "<=");
+                    EmpeñosDataGrid.ItemsSource = m_dt.DefaultView;
+                }
+            }           
             m_dba = null;
+            return true;
         }
         /*
          *SHOW TABLES FROM DB
@@ -69,28 +84,28 @@ namespace PrestamixC
         void MostrarEmpeños()
         {
             m_dba = new DBAccess();
-            DataTable m_dt = m_dba.SelectFromTable("Empenio", false, false, 0);            
+            DataTable m_dt = m_dba.SelectFromTable("Empenio", false, false, 0, "=");            
             EmpeñosDataGrid.ItemsSource = m_dt.DefaultView;
             m_dba = null;
         }
         private void MostrarClientes()
         {
             m_dba = new DBAccess();
-            DataTable m_dt = m_dba.SelectFromTable("Cliente", false, false, 0);
+            DataTable m_dt = m_dba.SelectFromTable("Cliente", false, false, 0, "=");
             ClientesDataGrid.ItemsSource = m_dt.DefaultView;
             m_dba = null;
         }
         void MostrarPrendas()
         {
             m_dba = new DBAccess();
-            DataTable m_dt = m_dba.SelectFromTable("Prenda", false, false, 0);
+            DataTable m_dt = m_dba.SelectFromTable("Prenda", false, false, 0, "=");
             PrendasDataGrid.ItemsSource = m_dt.DefaultView;
             m_dba = null;
         }
         void MostrarAlmacenes()
         {
             m_dba = new DBAccess();
-            DataTable m_dt = m_dba.SelectFromTable("Warehouse", false, false, 0);
+            DataTable m_dt = m_dba.SelectFromTable("Warehouse", false, false, 0, "=");
             AlmacenesDataGrid.ItemsSource = m_dt.DefaultView;
             m_dba = null;
         }
@@ -420,7 +435,10 @@ namespace PrestamixC
 
         private void pawnsTab_Selected(object sender, RoutedEventArgs e)
         {
-            MostrarEmpeños();            
+            if (showPawns)
+                MostrarEmpeños();
+            else
+                showPawns = true;
         }
         private void warehouseTab_Selected(object sender, RoutedEventArgs e)
         {

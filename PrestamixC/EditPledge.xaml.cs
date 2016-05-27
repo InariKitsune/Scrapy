@@ -35,7 +35,7 @@ namespace PrestamixC
         private void showPledgeData()
         {
             m_dba = new DBAccess();
-            DataTable m_dt = m_dba.SelectFromTable("Prenda", true, true, 3, "Nombre", "Ubicacion", "Descripcion", "Id", m_ID);
+            DataTable m_dt = m_dba.SelectFromTable("Prenda", true, true, 3, "Nombre", "Ubicacion", "Descripcion", "Id", m_ID, "=");
             DataRow row = m_dt.Rows[0];
             NameTextBox.Text = row["Nombre"].ToString();
             LocationTextBox.Text = row["Ubicacion"].ToString();
@@ -45,7 +45,7 @@ namespace PrestamixC
         private void confirmB_Click(object sender, RoutedEventArgs e)
         {
             m_dba = new DBAccess();
-            m_dba.UpdateTable("Prenda", 3, "Nombre", "Ubicacion", "Descripcion", "Id", NameTextBox.Text, LocationTextBox.Text, DescriptionTextBox.Text, m_ID);
+            m_dba.UpdateTable("Prenda", 3, "Nombre", "Ubicacion", "Descripcion", "Id", NameTextBox.Text, LocationTextBox.Text, DescriptionTextBox.Text, m_ID, "=");
             m_dba = null;
             Close();
         }

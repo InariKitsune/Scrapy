@@ -32,7 +32,7 @@ namespace PrestamixC.dao
             else
                 query = "SELECT * FROM " + tablename;
             if (selectCondition)
-                query = query + " WHERE "+values[numberOfRows]+"=@condition";
+                query = query + " WHERE "+values[numberOfRows]+values[values.Length-1]+"@condition";
             
             SqlConnection connection = new SqlConnection(connectionString);
             connection.Open();                     
@@ -98,7 +98,7 @@ namespace PrestamixC.dao
             command.ExecuteNonQuery();
             connection.Close();
         }
-        public void UpdateTable(string tablename, int nColums, params string[] values)
+        public int UpdateTable(string tablename, int nColums, params string[] values)
         {
             SqlConnection connection = new SqlConnection(connectionString);
             string query = "UPDATE " +tablename+ " SET ";
@@ -108,19 +108,19 @@ namespace PrestamixC.dao
                 if (i < nColums - 1)
                     query = query + ", ";
             }
-            query = query + " WHERE "+values[nColums]+"=@conn";            
+            query = query + " WHERE "+values[nColums]+values[values.Length-1]+"@conn";            
             connection.Open();
             String sql1 = string.Format(query);
             SqlCommand command = new SqlCommand(sql1, connection);
             int j = 0;
-            for (int i = nColums + 1; i < values.Length; i++)
+            for (int i = nColums + 1; i < values.Length-1; i++)
             {
                 string inParam = "@dat" + j;
                 j++;
                 command.Parameters.AddWithValue(inParam, values[i]);
             }
-            command.Parameters.AddWithValue("@conn", values[values.Length - 1]);
-            command.ExecuteNonQuery();
+            command.Parameters.AddWithValue("@conn", values[values.Length - 2]);
+            return command.ExecuteNonQuery();
         }
         public bool tableIsEmpty(string tablename)
         {

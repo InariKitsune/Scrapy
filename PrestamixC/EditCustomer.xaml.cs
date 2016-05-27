@@ -35,7 +35,7 @@ namespace PrestamixC
         private void showCustomerData()
         {
             m_dba = new DBAccess();
-            DataTable m_dt = m_dba.SelectFromTable("Cliente", true, true, 5, "Nombre", "ApellidoP", "ApellidoM", "Direccion", "Telefono", "Id", m_ID);
+            DataTable m_dt = m_dba.SelectFromTable("Cliente", true, true, 5, "Nombre", "ApellidoP", "ApellidoM", "Direccion", "Telefono", "Id", m_ID, "=");
             DataRow row = m_dt.Rows[0];
             nameTextBox.Text = row["Nombre"].ToString();
             fTextBox.Text = row["ApellidoP"].ToString();
@@ -47,7 +47,7 @@ namespace PrestamixC
         private void confirmB_Click(object sender, RoutedEventArgs e)
         {
             m_dba = new DBAccess();
-            m_dba.UpdateTable("Cliente", 5, "Nombre", "ApellidoP", "ApellidoM", "Direccion", "Telefono", "Id", nameTextBox.Text, fTextBox.Text, mTextBox.Text, addressTextBox.Text, phoneTextBox.Text, m_ID);
+            m_dba.UpdateTable("Cliente", 5, "Nombre", "ApellidoP", "ApellidoM", "Direccion", "Telefono", "Id", nameTextBox.Text, fTextBox.Text, mTextBox.Text, addressTextBox.Text, phoneTextBox.Text, m_ID, "=");
             m_dba = null;
             Close();
         }

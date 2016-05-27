@@ -36,7 +36,7 @@ namespace PrestamixC
         void showPawnData()
         {
             m_dba = new DBAccess();
-            DataTable m_dt = m_dba.SelectFromTable("Empenio", true, true, 4, "Monto", "Tipo", "Fecha", "Estado", "Id", m_ID);           
+            DataTable m_dt = m_dba.SelectFromTable("Empenio", true, true, 4, "Monto", "Tipo", "Fecha", "Estado", "Id", m_ID, "=");           
             DataRow row = m_dt.Rows[0];
             SumTextBox.Text = row["Monto"].ToString();
             typeTextBox.Text = row["Tipo"].ToString();
@@ -48,7 +48,7 @@ namespace PrestamixC
         private void confirmB_Click(object sender, RoutedEventArgs e)
         {
             m_dba = new DBAccess();
-            m_dba.UpdateTable("Empenio", 4, "Monto", "Tipo", "Fecha", "Estado", "Id", SumTextBox.Text, typeTextBox.Text, DateTime.ParseExact(mDateP.SelectedDate.ToString(), (Application.Current as PrestamixC.App).currentDateTimeFormat, CultureInfo.InvariantCulture).ToString("M/d/yyyy h:mm:ss tt"), StatusTextBox.Text, m_ID); 
+            m_dba.UpdateTable("Empenio", 4, "Monto", "Tipo", "Fecha", "Estado", "Id", SumTextBox.Text, typeTextBox.Text, DateTime.ParseExact(mDateP.SelectedDate.ToString(), (Application.Current as PrestamixC.App).currentDateTimeFormat, CultureInfo.InvariantCulture).ToString("M/d/yyyy h:mm:ss tt"), StatusTextBox.Text, m_ID, "="); 
             m_dba = null;
             Close();
         }
