@@ -78,6 +78,13 @@
                             </TextBlock>
                         </DockPanel>
                     </Button>
+                    <Button x:Name="Archive_Pawn" Margin="0,159,103,0" VerticalAlignment="Top" Height="33" RenderTransformOrigin="-1.16,2.091" HorizontalAlignment="Right" Width="125" Click="Archive_Pawn_Click">
+                        <DockPanel HorizontalAlignment="Right" Width="91" Height="23">
+                            <Image x:Name="archiveImage" Source="img/folderLight.png" Width="29" Margin="0,-13"/>
+                            <TextBlock RenderTransformOrigin="0.476,0.48" Height="19" Margin="0,2" Width="53"><Run Text="Archivar"/></TextBlock>
+                        </DockPanel>
+                    </Button>
+                    <Button x:Name="viewArchive" Content="Ver archivados" Margin="0,0,10,10" Height="33" HorizontalAlignment="Right" Width="125" VerticalAlignment="Bottom" Click="viewArchive_Click"/>
                 </Grid>
             </TabItem>
             <TabItem x:Name="pledgetab" Header="Prendas" Margin="-2,0,-2,-3" Selector.Selected="pledgetab_Selected">
@@ -152,7 +159,7 @@
                         <ComboBoxItem Content="Número de almacen"/>
                         <ComboBoxItem Content="Nombre del almacen"/>
                         <ComboBoxItem Content="Dirección"/>
-                        <ComboBoxItem Content="Estado"/>                        
+                        <ComboBoxItem Content="Estado"/>
                     </ComboBox>
                     <TextBox x:Name="WarehouseSearchCriteria" Height="30" Margin="140,10,359,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" MaxLength="50"/>
                     <Button x:Name="WarehouseSearchButton" Margin="0,10,233,0" VerticalAlignment="Top" Height="30" HorizontalAlignment="Right" Width="121" Click="warehouseSearchButton_Click">

@@ -169,12 +169,14 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="img\closeDark.png" />
+    <Resource Include="img\closeLight.png" />
+    <Resource Include="img\folderDark.png" />
+    <Resource Include="img\folderLight.png" />
     <Resource Include="img\addDark.png" />
     <Resource Include="img\addLight.png" />
     <Resource Include="img\checkDark.png" />
     <Resource Include="img\checkLight.png" />
-    <Resource Include="img\closeDark.png" />
-    <Resource Include="img\closeLight.png" />
     <Content Include="DB\Database1.mdf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

@@ -93,7 +93,6 @@ G:\PrestamixCv2.1\PrestamixCv2.1\PrestamixC\obj\Debug\PrestamixC.exe
 G:\PrestamixCv2.1\PrestamixCv2.1\PrestamixC\obj\Debug\PrestamixC.pdb
 G:\PrestamixCv2.1\PrestamixCv2.1\PrestamixC\bin\Debug\PrestamixC.exe
 G:\PrestamixCv2.1\PrestamixCv2.1\PrestamixC\bin\Debug\PrestamixC.pdb
-G:\PrestamixCv2.1\PrestamixCv2.1\PrestamixC\obj\Debug\PrestamixC.csprojResolveAssemblyReference.cache
 G:\PrestamixCv2.1\PrestamixCv2.1\PrestamixC\obj\Debug\MainWindow.baml
 G:\PrestamixCv2.1\PrestamixCv2.1\PrestamixC\obj\Debug\RegistrarEmpeño.baml
 G:\PrestamixCv2.1\PrestamixCv2.1\PrestamixC\obj\Debug\MainWindow.g.cs
@@ -123,3 +122,4 @@ G:\PrestamixCv2.1\PrestamixCv2.1\PrestamixC\obj\Debug\AddWarehouse.baml
 G:\PrestamixCv2.1\PrestamixCv2.1\PrestamixC\obj\Debug\AddWarehouse.g.cs
 G:\PrestamixCv2.1\PrestamixCv2.1\PrestamixC\obj\Debug\EditWarehouse.baml
 G:\PrestamixCv2.1\PrestamixCv2.1\PrestamixC\obj\Debug\EditWarehouse.g.cs
+G:\PrestamixCv2.1\PrestamixCv2.1\PrestamixC\obj\Debug\PrestamixC.csprojResolveAssemblyReference.cache

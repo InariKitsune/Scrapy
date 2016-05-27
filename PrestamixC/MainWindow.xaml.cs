@@ -32,6 +32,7 @@ namespace PrestamixC
         private bool VentanaEditarClienteAbierta = false;
         private bool VentanaRegistrarAlmacenAbierta = false;
         private bool VentanaEditarAlmacenAbierta = false;
+        private bool VistaArchivados = false;
         private bool showPawns;
         RegistrarEmpeño ventanaEmp;
         EditPawn ventanaEdt;
@@ -49,8 +50,7 @@ namespace PrestamixC
             ventanaEdt2 = null;
             ventanaEdt3 = null;
             ventanaWh = null;
-            if (updatePawnsStatus())
-                showPawns = false;               
+            showPawns = !updatePawnsStatus();           
         }
         /*
          *SHOW TABLES FROM DB
@@ -64,7 +64,7 @@ namespace PrestamixC
             m_dba.UpdateTable("Empenio", 1, "Estado", "Fecha", "Caducado", DateTime.ParseExact(TwomonthsAgo.ToString(), (Application.Current as PrestamixC.App).currentDateTimeFormat, CultureInfo.InvariantCulture).ToString("M/d/yyyy h:mm:ss tt"),"<=");
             if (proximos > 0)
             { 
-                if (MessageBox.Show("Hay " + proximos + "empeños que estan a punto de caducar o ya han caducado , quiere ver cuales son?", "Question", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.No)
+                if (MessageBox.Show("Hay " + proximos + "empeños que estan a punto de caducar o ya han caducado. ¿Quiere ver cuales son?", "Question", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.No)
                 {
                     m_dba = null;
                     return false;
@@ -73,10 +73,12 @@ namespace PrestamixC
                 {
                     DataTable m_dt = m_dba.SelectFromTable("Empenio", false, true, 0, "Fecha", DateTime.ParseExact(AlmostTwomonthsAgo.ToString(), (Application.Current as PrestamixC.App).currentDateTimeFormat, CultureInfo.InvariantCulture).ToString("M/d/yyyy h:mm:ss tt"), "<=");
                     EmpeñosDataGrid.ItemsSource = m_dt.DefaultView;
+                    m_dba = null;
+                    return true;
                 }
             }           
             m_dba = null;
-            return true;
+            return false;
         }
         /*
          *SHOW TABLES FROM DB
@@ -85,6 +87,13 @@ namespace PrestamixC
         {
             m_dba = new DBAccess();
             DataTable m_dt = m_dba.SelectFromTable("Empenio", false, false, 0, "=");            
+            EmpeñosDataGrid.ItemsSource = m_dt.DefaultView;
+            m_dba = null;
+        }
+        void MostrarArchivo()
+        {
+            m_dba = new DBAccess();
+            DataTable m_dt = m_dba.SelectFromTable("EmpenioArchive", false, false, 0, "=");
             EmpeñosDataGrid.ItemsSource = m_dt.DefaultView;
             m_dba = null;
         }
@@ -240,47 +249,87 @@ namespace PrestamixC
          */
         private void DeleteButton_Click(object sender, RoutedEventArgs e)//code for delete pawns
         {
-            m_dba = new DBAccess();
-            DataRowView drv = (DataRowView)EmpeñosDataGrid.SelectedItem;
-            if (drv != null)
+            if (MessageBox.Show("¿Está seguro? Esta acción no se puede deshacer.", "Question", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.No)
             {
-                m_dba.DeleteFromTable("Empenio", (drv["Id"]).ToString());
-                m_dba = null;
-                MostrarEmpeños();
+                return;
             }
+            else
+            {
+                m_dba = new DBAccess();
+                DataRowView drv = (DataRowView)EmpeñosDataGrid.SelectedItem;
+                if (drv != null)
+                {
+                    if (VistaArchivados)
+                    {
+                        m_dba.DeleteFromTable("EmpenioArchive", (drv["Id"]).ToString());
+                        m_dba = null;
+                        MostrarArchivo();
+                    }                        
+                    else
+                    {
+                        m_dba.DeleteFromTable("Empenio", (drv["Id"]).ToString());
+                        m_dba = null;
+                        MostrarEmpeños();
+                    }
+                        
+                }
+            } 
+            
         }
         private void DeletePledge_Click(object sender, RoutedEventArgs e)
         {
-            m_dba = new DBAccess();
-            DataRowView drv = (DataRowView)PrendasDataGrid.SelectedItem;
-            if (drv != null)
+            if (MessageBox.Show("¿Está seguro? Esta acción no se puede deshacer.", "Question", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.No)
             {
-                m_dba.DeleteFromTable("Prenda", (drv["Id"]).ToString());
-                m_dba = null;
-                MostrarPrendas();
+                return;
             }
+            else
+            { 
+                m_dba = new DBAccess();
+                DataRowView drv = (DataRowView)PrendasDataGrid.SelectedItem;
+                if (drv != null)
+                {
+                    m_dba.DeleteFromTable("Prenda", (drv["Id"]).ToString());
+                    m_dba = null;
+                    MostrarPrendas();
+                }
+            }
+           
         }        
         private void DeleteCustomer_Click(object sender, RoutedEventArgs e)
         {
-            m_dba = new DBAccess();
-            DataRowView drv = (DataRowView)ClientesDataGrid.SelectedItem;
-            if (drv != null)
+            if (MessageBox.Show("¿Está seguro? Esta acción no se puede deshacer.", "Question", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.No)
             {
-                m_dba.DeleteFromTable("Cliente", (drv["Id"]).ToString());
-                m_dba = null;
-                MostrarClientes();
+                return;
             }
+            else
+            { 
+                m_dba = new DBAccess();
+                DataRowView drv = (DataRowView)ClientesDataGrid.SelectedItem;
+                if (drv != null)
+                {
+                    m_dba.DeleteFromTable("Cliente", (drv["Id"]).ToString());
+                    m_dba = null;
+                    MostrarClientes();
+                }
+            } 
         }
         private void DeleteWarehouseButton_Click(object sender, RoutedEventArgs e)
         {
-            m_dba = new DBAccess();
-            DataRowView drv = (DataRowView)AlmacenesDataGrid.SelectedItem;
-            if(drv != null)
+            if (MessageBox.Show("¿Está seguro? Esta acción no se puede deshacer.", "Question", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.No)
             {
-                m_dba.DeleteFromTable("Warehouse", (drv["Id"]).ToString());
-                m_dba = null;
-                MostrarAlmacenes();
+                return;
             }
+            else
+            { 
+                m_dba = new DBAccess();
+                DataRowView drv = (DataRowView)AlmacenesDataGrid.SelectedItem;
+                if(drv != null)
+                {
+                    m_dba.DeleteFromTable("Warehouse", (drv["Id"]).ToString());
+                    m_dba = null;
+                    MostrarAlmacenes();
+                }
+            }            
         }
         /*
          *SEARCH
@@ -321,7 +370,11 @@ namespace PrestamixC
                         return;
                 }
                 m_dba = new DBAccess();
-                DataTable m_dt = m_dba.SelectFromTable("Empenio", false, true, 0, category, pawnSearchCriteria.Text);
+                DataTable m_dt;
+                if(VistaArchivados)
+                    m_dt = m_dba.SelectFromTable("EmpenioArchive", false, true, 0, category, pawnSearchCriteria.Text, "=");
+                else
+                    m_dt = m_dba.SelectFromTable("Empenio", false, true, 0, category, pawnSearchCriteria.Text,"=");
                 EmpeñosDataGrid.ItemsSource = m_dt.DefaultView;
                 m_dba = null;
             }
@@ -351,7 +404,7 @@ namespace PrestamixC
                         return;
                 }
                 m_dba = new DBAccess();
-                DataTable m_dt = m_dba.SelectFromTable("Prenda", false, true, 0, category, pledgeSearchCriteria.Text);
+                DataTable m_dt = m_dba.SelectFromTable("Prenda", false, true, 0, category, pledgeSearchCriteria.Text, "=");
                 PrendasDataGrid.ItemsSource = m_dt.DefaultView;
                 m_dba = null;       
             }
@@ -381,7 +434,7 @@ namespace PrestamixC
                         return;
                 }
                 m_dba = new DBAccess();
-                DataTable m_dt = m_dba.SelectFromTable("Cliente", false, true, 0, category, customerSearchCriteria.Text);
+                DataTable m_dt = m_dba.SelectFromTable("Cliente", false, true, 0, category, customerSearchCriteria.Text, "=");
                 ClientesDataGrid.ItemsSource = m_dt.DefaultView;
                 m_dba = null; 
             }
@@ -414,7 +467,7 @@ namespace PrestamixC
                         return;
                 }
                 m_dba = new DBAccess();
-                DataTable m_dt = m_dba.SelectFromTable("Warehouse", false, true, 0, category, WarehouseSearchCriteria.Text);
+                DataTable m_dt = m_dba.SelectFromTable("Warehouse", false, true, 0, category, WarehouseSearchCriteria.Text, "=");
                 AlmacenesDataGrid.ItemsSource = m_dt.DefaultView;
             }
             else
@@ -461,6 +514,7 @@ namespace PrestamixC
                     deleteImage.Source = new BitmapImage(new Uri("img/closeLight.png", UriKind.Relative));
                     editImage.Source = new BitmapImage(new Uri("img/editLight.png", UriKind.Relative));
                     searchImage.Source = new BitmapImage(new Uri("img/searchLight.png", UriKind.Relative));
+                    archiveImage.Source = new BitmapImage(new Uri("img/folderLight.png", UriKind.Relative));
                     break;
                 case 1:
                     uri1 = new Uri(@"/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.Green.xaml", UriKind.Relative);
@@ -471,6 +525,7 @@ namespace PrestamixC
                     deleteImage.Source = new BitmapImage(new Uri("img/closeLight.png", UriKind.Relative));
                     editImage.Source = new BitmapImage(new Uri("img/editLight.png", UriKind.Relative));
                     searchImage.Source = new BitmapImage(new Uri("img/searchLight.png", UriKind.Relative));
+                    archiveImage.Source = new BitmapImage(new Uri("img/folderLight.png", UriKind.Relative));
                     break;
                 case 2:
                     uri1 = new Uri(@"/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.Blue.xaml", UriKind.Relative);
@@ -481,6 +536,7 @@ namespace PrestamixC
                     deleteImage.Source = new BitmapImage(new Uri("img/closeLight.png", UriKind.Relative));
                     editImage.Source = new BitmapImage(new Uri("img/editLight.png", UriKind.Relative));
                     searchImage.Source = new BitmapImage(new Uri("img/searchLight.png", UriKind.Relative));
+                    archiveImage.Source = new BitmapImage(new Uri("img/folderLight.png", UriKind.Relative));
                     break;
                 case 3:
                     uri1 = new Uri(@"/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.Pink.xaml", UriKind.Relative);
@@ -491,6 +547,7 @@ namespace PrestamixC
                     deleteImage.Source = new BitmapImage(new Uri("img/closeLight.png", UriKind.Relative));
                     editImage.Source = new BitmapImage(new Uri("img/editLight.png", UriKind.Relative));
                     searchImage.Source = new BitmapImage(new Uri("img/searchLight.png", UriKind.Relative));
+                    archiveImage.Source = new BitmapImage(new Uri("img/folderLight.png", UriKind.Relative));
                     break;
                 case 4:
                     uri1 = new Uri(@"/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.Yellow.xaml", UriKind.Relative);
@@ -501,6 +558,7 @@ namespace PrestamixC
                     deleteImage.Source = new BitmapImage(new Uri("img/closeDark.png", UriKind.Relative));
                     editImage.Source = new BitmapImage(new Uri("img/editDark.png", UriKind.Relative));
                     searchImage.Source = new BitmapImage(new Uri("img/searchDark.png", UriKind.Relative));
+                    archiveImage.Source = new BitmapImage(new Uri("img/folderDark.png", UriKind.Relative));
                     break;
                 case 5:
                     uri1 = new Uri(@"/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.Purple.xaml", UriKind.Relative);
@@ -511,6 +569,7 @@ namespace PrestamixC
                     deleteImage.Source = new BitmapImage(new Uri("img/closeLight.png", UriKind.Relative));
                     editImage.Source = new BitmapImage(new Uri("img/editLight.png", UriKind.Relative));
                     searchImage.Source = new BitmapImage(new Uri("img/searchLight.png", UriKind.Relative));
+                    archiveImage.Source = new BitmapImage(new Uri("img/folderLight.png", UriKind.Relative));
                     break;
                 case 6:
                     uri1 = new Uri(@"/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.Orange.xaml", UriKind.Relative);
@@ -521,6 +580,7 @@ namespace PrestamixC
                     deleteImage.Source = new BitmapImage(new Uri("img/closeDark.png", UriKind.Relative));
                     editImage.Source = new BitmapImage(new Uri("img/editDark.png", UriKind.Relative));
                     searchImage.Source = new BitmapImage(new Uri("img/searchDark.png", UriKind.Relative));
+                    archiveImage.Source = new BitmapImage(new Uri("img/folderDark.png", UriKind.Relative));
                     break;
                 case 7:
                     uri1 = new Uri(@"/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.Brown.xaml", UriKind.Relative);
@@ -531,6 +591,7 @@ namespace PrestamixC
                     deleteImage.Source = new BitmapImage(new Uri("img/closeLight.png", UriKind.Relative));
                     editImage.Source = new BitmapImage(new Uri("img/editLight.png", UriKind.Relative));
                     searchImage.Source = new BitmapImage(new Uri("img/searchLight.png", UriKind.Relative));
+                    archiveImage.Source = new BitmapImage(new Uri("img/folderLight.png", UriKind.Relative));
                     break;
                 case 8:
                     uri1 = new Uri(@"/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.Lime.xaml", UriKind.Relative);
@@ -541,6 +602,7 @@ namespace PrestamixC
                     deleteImage.Source = new BitmapImage(new Uri("img/closeDark.png", UriKind.Relative));
                     editImage.Source = new BitmapImage(new Uri("img/editDark.png", UriKind.Relative));
                     searchImage.Source = new BitmapImage(new Uri("img/searchDark.png", UriKind.Relative));
+                    archiveImage.Source = new BitmapImage(new Uri("img/folderDark.png", UriKind.Relative));
                     break;
                 case 9:
                     uri1 = new Uri(@"/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.Teal.xaml", UriKind.Relative);
@@ -561,6 +623,7 @@ namespace PrestamixC
                     deleteImage.Source = new BitmapImage(new Uri("img/closeDark.png", UriKind.Relative));
                     editImage.Source = new BitmapImage(new Uri("img/editDark.png", UriKind.Relative));
                     searchImage.Source = new BitmapImage(new Uri("img/searchDark.png", UriKind.Relative));
+                    archiveImage.Source = new BitmapImage(new Uri("img/folderDark.png", UriKind.Relative));
                     break;
                 case 11:
                     uri1 = new Uri(@"/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.Indigo.xaml", UriKind.Relative);
@@ -571,6 +634,7 @@ namespace PrestamixC
                     deleteImage.Source = new BitmapImage(new Uri("img/closeLight.png", UriKind.Relative));
                     editImage.Source = new BitmapImage(new Uri("img/editLight.png", UriKind.Relative));
                     searchImage.Source = new BitmapImage(new Uri("img/searchLight.png", UriKind.Relative));
+                    archiveImage.Source = new BitmapImage(new Uri("img/folderLight.png", UriKind.Relative));
                     break;
                 case 12:
                     uri1 = new Uri(@"/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.Cyan.xaml", UriKind.Relative);
@@ -581,6 +645,7 @@ namespace PrestamixC
                     deleteImage.Source = new BitmapImage(new Uri("img/closeLight.png", UriKind.Relative));
                     editImage.Source = new BitmapImage(new Uri("img/editLight.png", UriKind.Relative));
                     searchImage.Source = new BitmapImage(new Uri("img/searchLight.png", UriKind.Relative));
+                    archiveImage.Source = new BitmapImage(new Uri("img/folderLight.png", UriKind.Relative));
                     break;
                 case 13:
                     uri1 = new Uri(@"/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.BlueGrey.xaml", UriKind.Relative);
@@ -591,6 +656,7 @@ namespace PrestamixC
                     deleteImage.Source = new BitmapImage(new Uri("img/closeLight.png", UriKind.Relative));
                     editImage.Source = new BitmapImage(new Uri("img/editLight.png", UriKind.Relative));
                     searchImage.Source = new BitmapImage(new Uri("img/searchLight.png", UriKind.Relative));
+                    archiveImage.Source = new BitmapImage(new Uri("img/folderLight.png", UriKind.Relative));
                     break;
                 case 14:
                     uri1 = new Uri(@"/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.LightBlue.xaml", UriKind.Relative);
@@ -601,6 +667,7 @@ namespace PrestamixC
                     deleteImage.Source = new BitmapImage(new Uri("img/closeLight.png", UriKind.Relative));
                     editImage.Source = new BitmapImage(new Uri("img/editLight.png", UriKind.Relative));
                     searchImage.Source = new BitmapImage(new Uri("img/searchLight.png", UriKind.Relative));
+                    archiveImage.Source = new BitmapImage(new Uri("img/folderLight.png", UriKind.Relative));
                     break;
                 case 15:
                     uri1 = new Uri(@"/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.LightGreen.xaml", UriKind.Relative);
@@ -611,6 +678,7 @@ namespace PrestamixC
                     deleteImage.Source = new BitmapImage(new Uri("img/closeDark.png", UriKind.Relative));
                     editImage.Source = new BitmapImage(new Uri("img/editDark.png", UriKind.Relative));
                     searchImage.Source = new BitmapImage(new Uri("img/searchDark.png", UriKind.Relative));
+                    archiveImage.Source = new BitmapImage(new Uri("img/folderDark.png", UriKind.Relative));
                     break;
                 case 16:
                     uri1 = new Uri(@"/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.DeepOrange.xaml", UriKind.Relative);
@@ -621,6 +689,7 @@ namespace PrestamixC
                     deleteImage.Source = new BitmapImage(new Uri("img/closeLight.png", UriKind.Relative));
                     editImage.Source = new BitmapImage(new Uri("img/editLight.png", UriKind.Relative));
                     searchImage.Source = new BitmapImage(new Uri("img/searchLight.png", UriKind.Relative));
+                    archiveImage.Source = new BitmapImage(new Uri("img/folderLight.png", UriKind.Relative));
                     break;
                 case 17:
                     uri1 = new Uri(@"/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.DeepPurple.xaml", UriKind.Relative);                    
@@ -631,6 +700,7 @@ namespace PrestamixC
                     deleteImage.Source = new BitmapImage(new Uri("img/closeLight.png", UriKind.Relative));
                     editImage.Source = new BitmapImage(new Uri("img/editLight.png", UriKind.Relative));
                     searchImage.Source = new BitmapImage(new Uri("img/searchLight.png", UriKind.Relative));
+                    archiveImage.Source = new BitmapImage(new Uri("img/folderLight.png", UriKind.Relative));
                     break;
                 default:
                     uri1 = new Uri(@"/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.LightGreen.xaml", UriKind.Relative);
@@ -640,6 +710,51 @@ namespace PrestamixC
                     break;                    
             }           
             ((App)Application.Current).ChangeTheme(uri1, uri2);            
-        }        
+        }
+        /*
+        ARCHIVE
+         */
+        private void Archive_Pawn_Click(object sender, RoutedEventArgs e)
+        {
+            if (MessageBox.Show("¿Está seguro? Esta acción no se puede deshacer.", "Question", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.No)
+            {
+                return;
+            }
+            else
+            {
+                m_dba = new DBAccess();
+                DataRowView drv = (DataRowView)EmpeñosDataGrid.SelectedItem;
+                if (drv != null)
+                {
+                    DataTable m_dt = m_dba.SelectFromTable("Empenio", false, true, 0, "Id", (drv["Id"]).ToString(), "=");
+                    DataRow row = m_dt.Rows[0];
+                    m_dba.InsertIntoTable("EmpenioArchive", "IdCliente", "IdPrenda", "Monto", "Tipo", "Fecha", "Estado", row["idCliente"].ToString(), row["idPrenda"].ToString(), row["Monto"].ToString(), row["Tipo"].ToString(), DateTime.ParseExact(row["Fecha"].ToString(), (Application.Current as PrestamixC.App).currentDateTimeFormat, CultureInfo.InvariantCulture).ToString("M/d/yyyy h:mm:ss tt"), "Archivado");
+                    m_dba.DeleteFromTable("Empenio", (drv["Id"]).ToString());
+                    m_dba = null;
+                }
+                MostrarEmpeños();
+            }
+        }
+        private void viewArchive_Click(object sender, RoutedEventArgs e)
+        {
+            if (!VistaArchivados)
+            {
+                VistaArchivados = true;
+                BotonRegistrarEmpeños.IsEnabled = false;
+                EditSPawn.IsEnabled = false;
+                Archive_Pawn.IsEnabled = false;
+                viewArchive.Content = "Volver";
+                MostrarArchivo();
+            }
+            else
+            {
+                VistaArchivados = false;
+                BotonRegistrarEmpeños.IsEnabled = true;
+                EditSPawn.IsEnabled = true;
+                Archive_Pawn.IsEnabled = true;
+                viewArchive.Content = "Ver archivados";
+                MostrarEmpeños();
+            }
+        }             
     }
 }
