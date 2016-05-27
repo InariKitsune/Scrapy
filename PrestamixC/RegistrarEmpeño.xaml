@@ -14,7 +14,7 @@
         <TextBox x:Name="NombreTextBox" HorizontalAlignment="Left" Height="36" Margin="69,53,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="163" MaxLength="50"/>
         <TextBox x:Name="ApellidoPaternoTextBox" HorizontalAlignment="Left" Height="36" Margin="359,53,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="174" MaxLength="50"/>
         <TextBox x:Name="ApellidoMaternoTextBox" HorizontalAlignment="Left" Height="36" Margin="664,53,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="174" MaxLength="50"/>
-        <TextBox x:Name="CiTextBox" HorizontalAlignment="Left" Height="37" Margin="69,94,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="163" MaxLength="50"/>
+        <TextBox x:Name="CiTextBox" HorizontalAlignment="Left" Height="37" Margin="69,94,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="163" MaxLength="50" TextChanged="CiTextBox_TextChanged"/>
         <TextBox x:Name="DireccionTextBox" HorizontalAlignment="Left" Height="37" Margin="359,94,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="174" MaxLength="50"/>
         <TextBox x:Name="TelefonoTextBox" HorizontalAlignment="Left" Height="37" Margin="664,94,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="174" MaxLength="50"/>
         <TextBox x:Name="NombrePrendaTextBox" HorizontalAlignment="Left" Height="37" Margin="138,179,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="163" MaxLength="50"/>

@@ -26,6 +26,7 @@ namespace PrestamixC
     public partial class RegistrarEmpeño : MetroWindow
     {
         private DBAccess m_dba;
+        private bool customerExist;
         public RegistrarEmpeño()
         {
             InitializeComponent();
@@ -47,8 +48,9 @@ namespace PrestamixC
             {
                 if (int.TryParse(CiTextBox.Text, out i) && int.TryParse(IdEmpeñoTextBox.Text, out i) && int.TryParse(IdPrendaTextBox.Text, out i))
                 {
-                    m_dba = new DBAccess();                    
-                    m_dba.InsertIntoTable("Cliente", "Id", "Nombre", "ApellidoP", "ApellidoM", "Direccion", "Telefono", CiTextBox.Text, NombreTextBox.Text, ApellidoPaternoTextBox.Text, ApellidoMaternoTextBox.Text, DireccionTextBox.Text, TelefonoTextBox.Text);
+                    m_dba = new DBAccess();
+                    if(!customerExist)
+                        m_dba.InsertIntoTable("Cliente", "Id", "Nombre", "ApellidoP", "ApellidoM", "Direccion", "Telefono", CiTextBox.Text, NombreTextBox.Text, ApellidoPaternoTextBox.Text, ApellidoMaternoTextBox.Text, DireccionTextBox.Text, TelefonoTextBox.Text);
                     m_dba.InsertIntoTable("Empenio", "Id", "IdCliente", "IdPrenda", "Monto", "Tipo", "Fecha", "Estado", IdEmpeñoTextBox.Text, CiTextBox.Text, IdPrendaTextBox.Text, MontoTextBox.Text, TipoTextBox.Text, DateTime.ParseExact(FechaTextBox.SelectedDate.ToString(), (Application.Current as PrestamixC.App).currentDateTimeFormat, CultureInfo.InvariantCulture).ToString("M/d/yyyy h:mm:ss tt"), "Vigente");
                     m_dba.InsertIntoTable("Prenda", "Id", "Nombre", "Ubicacion", "Descripcion", IdPrendaTextBox.Text, NombrePrendaTextBox.Text, WarehouseComboBox.Text, DescripcionTextBox.Text);
                     m_dba = null;
@@ -63,6 +65,36 @@ namespace PrestamixC
         private void cancelB_Click(object sender, RoutedEventArgs e)
         {
             Close();            
+        }
+
+        private void CiTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            int i;
+            if (int.TryParse(CiTextBox.Text, out i))
+            {
+                m_dba = new DBAccess();
+                DataTable m_dt = m_dba.SelectFromTable("Cliente", true, true, 5, "Nombre", "ApellidoP", "ApellidoM", "Direccion", "Telefono", "Id", CiTextBox.Text, "=");
+                if (m_dt.Rows.Count > 0)
+                {
+                    DataRow row = m_dt.Rows[0];
+                    NombreTextBox.Text = row["Nombre"].ToString();
+                    ApellidoPaternoTextBox.Text = row["ApellidoP"].ToString();
+                    ApellidoMaternoTextBox.Text = row["ApellidoM"].ToString();
+                    DireccionTextBox.Text = row["Direccion"].ToString();
+                    TelefonoTextBox.Text = row["Telefono"].ToString();
+                    m_dba = null;
+                    customerExist = true;
+                }
+                else
+                {
+                    NombreTextBox.Text = "";
+                    ApellidoPaternoTextBox.Text = "";
+                    ApellidoMaternoTextBox.Text = "";
+                    DireccionTextBox.Text = "";
+                    TelefonoTextBox.Text = "";
+                    customerExist = false;
+                }                    
+            }
         }
     }
 }
