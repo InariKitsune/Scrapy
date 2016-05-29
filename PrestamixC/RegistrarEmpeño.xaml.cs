@@ -49,11 +49,32 @@ namespace PrestamixC
                 if (int.TryParse(CiTextBox.Text, out i) && int.TryParse(IdEmpeñoTextBox.Text, out i) && int.TryParse(IdPrendaTextBox.Text, out i))
                 {
                     m_dba = new DBAccess();
+                    /*registrando cliente*/
                     if(!customerExist)
                         m_dba.InsertIntoTable("Cliente", "Id", "Nombre", "ApellidoP", "ApellidoM", "Direccion", "Telefono", CiTextBox.Text, NombreTextBox.Text, ApellidoPaternoTextBox.Text, ApellidoMaternoTextBox.Text, DireccionTextBox.Text, TelefonoTextBox.Text);
-                    m_dba.InsertIntoTable("Empenio", "Id", "IdCliente", "IdPrenda", "Monto", "Tipo", "Fecha", "Estado", IdEmpeñoTextBox.Text, CiTextBox.Text, IdPrendaTextBox.Text, MontoTextBox.Text, TipoTextBox.Text, DateTime.ParseExact(FechaTextBox.SelectedDate.ToString(), (Application.Current as PrestamixC.App).currentDateTimeFormat, CultureInfo.InvariantCulture).ToString("M/d/yyyy h:mm:ss tt"), "Vigente");
-                    m_dba.InsertIntoTable("Prenda", "Id", "Nombre", "Ubicacion", "Descripcion", IdPrendaTextBox.Text, NombrePrendaTextBox.Text, WarehouseComboBox.Text, DescripcionTextBox.Text);
-                    m_dba = null;
+                    /*registrando prenda*/
+                    try
+                    {
+                        m_dba.InsertIntoTable("Prenda", "Id", "Nombre", "Ubicacion", "Descripcion", IdPrendaTextBox.Text, NombrePrendaTextBox.Text, WarehouseComboBox.Text, DescripcionTextBox.Text);
+                    }
+                    catch (System.Data.SqlClient.SqlException)
+                    {
+                        MessageBox.Show("Ya se ha registrado una prenda con el mismo numero. Por favor, cambie el valor del campo -Id Prenda- e intentelo nuevamente");
+                        m_dba = null;
+                        return;
+                    }             
+                    /*registrando empeño*/
+                    try
+                    {
+                        m_dba.InsertIntoTable("Empenio", "Id", "IdCliente", "IdPrenda", "Monto", "Tipo", "Fecha", "Estado", IdEmpeñoTextBox.Text, CiTextBox.Text, IdPrendaTextBox.Text, MontoTextBox.Text, TipoTextBox.Text, DateTime.ParseExact(FechaTextBox.SelectedDate.ToString(), (Application.Current as PrestamixC.App).currentDateTimeFormat, CultureInfo.InvariantCulture).ToString("M/d/yyyy h:mm:ss tt"), "Vigente");
+                    }
+                    catch (System.Data.SqlClient.SqlException)
+                    {
+                        MessageBox.Show("Ya se ha registrado un empeño con el mismo numero. Por favor, cambie el valor del campo -Id Empeño- e intentelo nuevamente");
+                        m_dba.DeleteFromTable("Prenda", IdPrendaTextBox.Text);
+                        m_dba = null;
+                        return;
+                    }
                     Close();
                 }
                 else

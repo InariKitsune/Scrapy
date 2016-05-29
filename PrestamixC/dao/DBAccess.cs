@@ -84,8 +84,18 @@ namespace PrestamixC.dao
                 string inParam = "@inn" + i;
                 command.Parameters.AddWithValue(inParam, values[i]);
             }
-            command.ExecuteNonQuery();           
-            connection.Close();    
+            try
+            {
+                command.ExecuteNonQuery();
+            }
+            catch (System.Data.SqlClient.SqlException e)
+            {
+                throw e;
+            }
+            finally
+            {
+                connection.Close();  
+            }               
         }
         public void DeleteFromTable(string tablename, string id)
         {

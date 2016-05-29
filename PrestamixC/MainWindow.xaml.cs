@@ -249,16 +249,16 @@ namespace PrestamixC
          */
         private void DeleteButton_Click(object sender, RoutedEventArgs e)//code for delete pawns
         {
-            if (MessageBox.Show("¿Está seguro? Esta acción no se puede deshacer.", "Question", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.No)
-            {
-                return;
-            }
-            else
-            {
-                m_dba = new DBAccess();
-                DataRowView drv = (DataRowView)EmpeñosDataGrid.SelectedItem;
-                if (drv != null)
+            DataRowView drv = (DataRowView)EmpeñosDataGrid.SelectedItem;
+            if (drv != null)
+            { 
+                if (MessageBox.Show("¿Está seguro? Esta acción no se puede deshacer.", "Question", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.No)
                 {
+                    return;
+                }
+                else
+                {
+                    m_dba = new DBAccess();                
                     if (VistaArchivados)
                     {
                         m_dba.DeleteFromTable("EmpenioArchive", (drv["Id"]).ToString());
@@ -271,65 +271,63 @@ namespace PrestamixC
                         m_dba = null;
                         MostrarEmpeños();
                     }
-                        
-                }
-            } 
-            
+                } 
+            }
         }
         private void DeletePledge_Click(object sender, RoutedEventArgs e)
         {
-            if (MessageBox.Show("¿Está seguro? Esta acción no se puede deshacer.", "Question", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.No)
+            DataRowView drv = (DataRowView)PrendasDataGrid.SelectedItem;
+            if (drv != null)
             {
-                return;
-            }
-            else
-            { 
-                m_dba = new DBAccess();
-                DataRowView drv = (DataRowView)PrendasDataGrid.SelectedItem;
-                if (drv != null)
+                if (MessageBox.Show("¿Está seguro? Esta acción no se puede deshacer.", "Question", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.No)
                 {
+                    return;
+                }
+                else
+                { 
+                    m_dba = new DBAccess();               
                     m_dba.DeleteFromTable("Prenda", (drv["Id"]).ToString());
                     m_dba = null;
-                    MostrarPrendas();
+                    MostrarPrendas();              
                 }
-            }
-           
+            } 
         }        
         private void DeleteCustomer_Click(object sender, RoutedEventArgs e)
         {
-            if (MessageBox.Show("¿Está seguro? Esta acción no se puede deshacer.", "Question", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.No)
-            {
-                return;
-            }
-            else
+            DataRowView drv = (DataRowView)ClientesDataGrid.SelectedItem;
+            if (drv != null)
             { 
-                m_dba = new DBAccess();
-                DataRowView drv = (DataRowView)ClientesDataGrid.SelectedItem;
-                if (drv != null)
+                if (MessageBox.Show("¿Está seguro? Esta acción no se puede deshacer.", "Question", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.No)
                 {
+                    return;
+                }
+                else
+                { 
+                    m_dba = new DBAccess();               
                     m_dba.DeleteFromTable("Cliente", (drv["Id"]).ToString());
                     m_dba = null;
-                    MostrarClientes();
-                }
-            } 
+                    MostrarClientes();                
+                } 
+            }            
         }
         private void DeleteWarehouseButton_Click(object sender, RoutedEventArgs e)
         {
-            if (MessageBox.Show("¿Está seguro? Esta acción no se puede deshacer.", "Question", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.No)
-            {
-                return;
-            }
-            else
+            DataRowView drv = (DataRowView)AlmacenesDataGrid.SelectedItem;
+            if (drv != null)
             { 
-                m_dba = new DBAccess();
-                DataRowView drv = (DataRowView)AlmacenesDataGrid.SelectedItem;
-                if(drv != null)
+                if (MessageBox.Show("¿Está seguro? Esta acción no se puede deshacer.", "Question", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.No)
                 {
+                    return;
+                }
+                else
+                { 
+                    m_dba = new DBAccess();                
                     m_dba.DeleteFromTable("Warehouse", (drv["Id"]).ToString());
                     m_dba = null;
-                    MostrarAlmacenes();
-                }
-            }            
+                    MostrarAlmacenes();               
+                }        
+            }
+                
         }
         /*
          *SEARCH
