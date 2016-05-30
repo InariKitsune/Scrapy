@@ -58,7 +58,7 @@ namespace PrestamixC
                         }
                         catch (System.Data.SqlClient.SqlException)
                         {
-                            
+                            //doing nothing
                         }
                     }                       
                     /*registrando prenda*/

@@ -29,6 +29,7 @@ namespace PrestamixC
         {
             InitializeComponent();
             m_ID = id;
+            this.Title = "Editando datos de: " + m_ID;
             m_dba = null;
             showCustomerData();
         }

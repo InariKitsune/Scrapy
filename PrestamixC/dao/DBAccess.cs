@@ -5,21 +5,18 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data;
 using System.Data.SqlClient;
+using System.Windows;
 
 namespace PrestamixC.dao
 {
     class DBAccess
     {
         private static string connectionString;
+        string m_path = AppDomain.CurrentDomain.BaseDirectory;
         public DBAccess()
         {
-           
-            connectionString = @"Data Source=(LocalDB)\v11.0;AttachDbFileName=|DataDirectory|DB\Database1.mdf;Integrated Security=True;";
-        }
-        public void initialize()
-        { 
-            
-        }
+            connectionString = @"Data Source=(LocalDB)\v11.0;AttachDbFileName=" + m_path + "DB\\Database1.mdf;Integrated Security=True;";            
+        }        
         public DataTable SelectFromTable(string tablename, bool selectRows, bool selectCondition, int numberOfRows, params string [] values)
         {
             string query = "";

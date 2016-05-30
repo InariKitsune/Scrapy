@@ -3,20 +3,20 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:metro="http://metro.mahapps.com/winfx/xaml/controls"
         xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"        
-        Title="RegistrarEmpeño" Height="512.034" Width="856.69" IsMaxRestoreButtonEnabled="False" Topmost="True" IsMinButtonEnabled="False">
+        Title="Registrar empeño" Height="512.034" Width="856.69" IsMaxRestoreButtonEnabled="False" Topmost="True" IsMinButtonEnabled="False">
     <Grid x:Name="FechaLabel" Margin="0,0,2,2">
-        <Label x:Name="NombreLabel" Content="Nombre" HorizontalAlignment="Left" Margin="11,63,0,0" VerticalAlignment="Top" Width="62" Height="26"/>
-        <Label x:Name="ApellidoPaternoLabel" Content="Apellido paterno" HorizontalAlignment="Left" Margin="257,63,0,0" VerticalAlignment="Top" Width="102" Height="26"/>
-        <Label x:Name="CiLabel" Content="C.I." HorizontalAlignment="Left" Margin="13,105,0,0" VerticalAlignment="Top" Width="60" Height="26"/>
-        <Label x:Name="ApellidoMaternoLabel" Content="Apellido materno" HorizontalAlignment="Left" Margin="557,63,0,0" VerticalAlignment="Top" Height="26" Width="102"/>
-        <Label x:Name="DireccionLabel" Content="Dirección" HorizontalAlignment="Left" Margin="299,105,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.395,-0.115" Height="26" Width="60"/>
-        <Label x:Name="TelefonoLabel" Content="Teléfono" HorizontalAlignment="Left" Margin="599,105,0,0" VerticalAlignment="Top" Width="59" Height="26"/>
-        <TextBox x:Name="NombreTextBox" HorizontalAlignment="Left" Height="36" Margin="69,53,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="163" MaxLength="50"/>
-        <TextBox x:Name="ApellidoPaternoTextBox" HorizontalAlignment="Left" Height="36" Margin="359,53,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="174" MaxLength="50"/>
-        <TextBox x:Name="ApellidoMaternoTextBox" HorizontalAlignment="Left" Height="36" Margin="664,53,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="174" MaxLength="50"/>
-        <TextBox x:Name="CiTextBox" HorizontalAlignment="Left" Height="37" Margin="69,94,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="163" MaxLength="50" TextChanged="CiTextBox_TextChanged"/>
-        <TextBox x:Name="DireccionTextBox" HorizontalAlignment="Left" Height="37" Margin="359,94,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="174" MaxLength="50"/>
-        <TextBox x:Name="TelefonoTextBox" HorizontalAlignment="Left" Height="37" Margin="664,94,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="174" MaxLength="50"/>
+        <Label x:Name="NombreLabel" Content="Nombre" HorizontalAlignment="Left" Margin="12,105,0,0" VerticalAlignment="Top" Width="62" Height="26"/>
+        <Label x:Name="ApellidoPaternoLabel" Content="Apellido paterno" HorizontalAlignment="Left" Margin="258,105,0,0" VerticalAlignment="Top" Width="102" Height="26"/>
+        <Label x:Name="CiLabel" Content="C.I." HorizontalAlignment="Left" Margin="14,64,0,0" VerticalAlignment="Top" Width="60" Height="26"/>
+        <Label x:Name="ApellidoMaternoLabel" Content="Apellido materno" HorizontalAlignment="Left" Margin="558,105,0,0" VerticalAlignment="Top" Height="26" Width="102"/>
+        <Label x:Name="DireccionLabel" Content="Dirección" HorizontalAlignment="Left" Margin="300,64,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.395,-0.115" Height="26" Width="60"/>
+        <Label x:Name="TelefonoLabel" Content="Teléfono" HorizontalAlignment="Left" Margin="600,64,0,0" VerticalAlignment="Top" Width="59" Height="26"/>
+        <TextBox x:Name="NombreTextBox" HorizontalAlignment="Left" Height="36" Margin="70,95,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="163" MaxLength="50"/>
+        <TextBox x:Name="ApellidoPaternoTextBox" HorizontalAlignment="Left" Height="36" Margin="360,95,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="174" MaxLength="50"/>
+        <TextBox x:Name="ApellidoMaternoTextBox" HorizontalAlignment="Left" Height="36" Margin="665,95,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="174" MaxLength="50"/>
+        <TextBox x:Name="CiTextBox" HorizontalAlignment="Left" Height="37" Margin="70,53,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="163" MaxLength="50" TextChanged="CiTextBox_TextChanged"/>
+        <TextBox x:Name="DireccionTextBox" HorizontalAlignment="Left" Height="37" Margin="360,53,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="174" MaxLength="50"/>
+        <TextBox x:Name="TelefonoTextBox" HorizontalAlignment="Left" Height="37" Margin="665,53,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="174" MaxLength="50"/>
         <TextBox x:Name="NombrePrendaTextBox" HorizontalAlignment="Left" Height="37" Margin="138,179,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="163" MaxLength="50"/>
         <TextBox x:Name="IdPrendaTextBox" HorizontalAlignment="Left" Height="37" Margin="138,221,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="163" MaxLength="50"/>
         <ComboBox x:Name="WarehouseComboBox" HorizontalAlignment="Left" Margin="138,263,0,0" VerticalAlignment="Top" Width="163" Height="37"/>

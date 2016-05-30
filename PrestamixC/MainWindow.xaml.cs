@@ -279,7 +279,7 @@ namespace PrestamixC
             DataRowView drv = (DataRowView)PrendasDataGrid.SelectedItem;
             if (drv != null)
             {
-                if (MessageBox.Show("¿Está seguro? Esta acción no se puede deshacer.", "Question", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.No)
+                if (MessageBox.Show("¿Está seguro? Esta acción no se puede deshacer.", "***ATENCIÓN***", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.No)
                 {
                     return;
                 }
@@ -296,8 +296,8 @@ namespace PrestamixC
         {
             DataRowView drv = (DataRowView)ClientesDataGrid.SelectedItem;
             if (drv != null)
-            { 
-                if (MessageBox.Show("¿Está seguro? Esta acción no se puede deshacer.", "Question", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.No)
+            {
+                if (MessageBox.Show("¿Está seguro? Esta acción no se puede deshacer.", "***ATENCIÓN***", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.No)
                 {
                     return;
                 }
@@ -314,8 +314,8 @@ namespace PrestamixC
         {
             DataRowView drv = (DataRowView)AlmacenesDataGrid.SelectedItem;
             if (drv != null)
-            { 
-                if (MessageBox.Show("¿Está seguro? Esta acción no se puede deshacer.", "Question", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.No)
+            {
+                if (MessageBox.Show("¿Está seguro? Esta acción no se puede deshacer.", "***ATENCIÓN***", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.No)
                 {
                     return;
                 }
@@ -714,7 +714,7 @@ namespace PrestamixC
          */
         private void Archive_Pawn_Click(object sender, RoutedEventArgs e)
         {
-            if (MessageBox.Show("¿Está seguro? Esta acción no se puede deshacer.", "Question", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.No)
+            if (MessageBox.Show("¿Está seguro? Esta acción no se puede deshacer.", "***ATENCIÓN***", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.No)
             {
                 return;
             }

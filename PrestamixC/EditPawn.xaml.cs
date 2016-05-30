@@ -30,6 +30,7 @@ namespace PrestamixC
         {
             InitializeComponent();
             m_ID = id;
+            this.Title = "Editando empeño: " + m_ID;
             m_dba = null;
             showPawnData();
         }

@@ -29,24 +29,24 @@ namespace PrestamixC
         {
             InitializeComponent();
             m_ID = id;
+            this.Title = "Editando almacen n°: " + m_ID; 
             m_dba = null;
             showWarehouseData();
         }
         private void showWarehouseData()
         {
             m_dba = new DBAccess();
-            DataTable m_dt = m_dba.SelectFromTable("Warehouse", true, true, 4, "Nombre", "Direccion", "Estado", "Descripcion", "Id", m_ID, "=");
+            DataTable m_dt = m_dba.SelectFromTable("Warehouse", true, true, 3, "Nombre", "Direccion", "Descripcion", "Id", m_ID, "=");
             DataRow row = m_dt.Rows[0];
             NameTextBox.Text = row["Nombre"].ToString();
-            LocationTextBox.Text = row["Direccion"].ToString();
-            statusTextBox.Text = row["Estado"].ToString();
+            LocationTextBox.Text = row["Direccion"].ToString();          
             DescriptionTextBox.Text = row["Descripcion"].ToString();
             m_dba = null;
         }
         private void confirmB_Click(object sender, RoutedEventArgs e)
         {
             m_dba = new DBAccess();
-            m_dba.UpdateTable("Warehouse", 4, "Nombre", "Direccion", "Estado", "Descripcion", "Id",NameTextBox.Text, LocationTextBox.Text, statusTextBox.Text ,DescriptionTextBox.Text, m_ID, "=");
+            m_dba.UpdateTable("Warehouse", 3, "Nombre", "Direccion", "Descripcion", "Id",NameTextBox.Text, LocationTextBox.Text, DescriptionTextBox.Text, m_ID, "=");
             m_dba = null;
             Close();
         }

@@ -36,8 +36,16 @@ namespace PrestamixC
                 if(int.TryParse(IdAlmacen.Text, out i))
                 {
                     m_dba = new DBAccess();
-                    m_dba.InsertIntoTable("Warehouse", "Id", "Nombre", "Direccion", "Descripcion", IdAlmacen.Text, NombreAlmacen.Text, DireccionTextBox.Text, DescripcionTextBox.Text);
-                    m_dba = null;
+                    try
+                    {
+                        m_dba.InsertIntoTable("Warehouse", "Id", "Nombre", "Direccion", "Descripcion", IdAlmacen.Text, NombreAlmacen.Text, DireccionTextBox.Text, DescripcionTextBox.Text);
+                    }
+                    catch (System.Data.SqlClient.SqlException)
+                    {
+                        MessageBox.Show("Ya existe un almacen con ese número, cambie el valor del campo -Número de almacen- e intentelo nuevamente");
+                        m_dba = null;
+                        return;
+                    }                    
                     Close();
                 }
                 else                
