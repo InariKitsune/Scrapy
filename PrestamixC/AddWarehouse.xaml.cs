@@ -36,7 +36,7 @@ namespace PrestamixC
                 if(int.TryParse(IdAlmacen.Text, out i))
                 {
                     m_dba = new DBAccess();
-                    m_dba.InsertIntoTable("Warehouse", "Id", "Nombre", "Direccion", "Estado", "Descripcion", IdAlmacen.Text, NombreAlmacen.Text, DireccionTextBox.Text, "Vacio", DescripcionTextBox.Text);
+                    m_dba.InsertIntoTable("Warehouse", "Id", "Nombre", "Direccion", "Descripcion", IdAlmacen.Text, NombreAlmacen.Text, DireccionTextBox.Text, DescripcionTextBox.Text);
                     m_dba = null;
                     Close();
                 }

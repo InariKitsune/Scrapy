@@ -13,7 +13,12 @@ namespace PrestamixC.dao
         private static string connectionString;
         public DBAccess()
         {
-            connectionString = @"Data Source=(LocalDB)\v11.0;AttachDbFileName=G:\PrestamixCv2.1\PrestamixCv2.1\PrestamixC\DB\Database1.mdf;Integrated Security=True;";
+           
+            connectionString = @"Data Source=(LocalDB)\v11.0;AttachDbFileName=|DataDirectory|DB\Database1.mdf;Integrated Security=True;";
+        }
+        public void initialize()
+        { 
+            
         }
         public DataTable SelectFromTable(string tablename, bool selectRows, bool selectCondition, int numberOfRows, params string [] values)
         {
@@ -30,7 +35,7 @@ namespace PrestamixC.dao
                 query = query + " FROM " + tablename;   
             }
             else
-                query = "SELECT * FROM " + tablename;
+                query = "SELECT * FROM " + tablename;            
             if (selectCondition)
                 query = query + " WHERE "+values[numberOfRows]+values[values.Length-1]+"@condition";
             

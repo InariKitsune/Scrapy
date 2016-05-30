@@ -46,12 +46,21 @@ namespace PrestamixC
             int i;
             if (CiTextBox.Text != "" || IdEmpeñoTextBox.Text != "" || IdPrendaTextBox.Text != "")
             {
-                if (int.TryParse(CiTextBox.Text, out i) && int.TryParse(IdEmpeñoTextBox.Text, out i) && int.TryParse(IdPrendaTextBox.Text, out i))
+                if (int.TryParse(CiTextBox.Text, out i) && int.TryParse(IdEmpeñoTextBox.Text, out i) && int.TryParse(IdPrendaTextBox.Text, out i) && ((int.TryParse(TelefonoTextBox.Text, out i) && int.TryParse(MontoTextBox.Text, out i)) || TelefonoTextBox.Text == "" || MontoTextBox.Text == ""))
                 {
                     m_dba = new DBAccess();
                     /*registrando cliente*/
-                    if(!customerExist)
-                        m_dba.InsertIntoTable("Cliente", "Id", "Nombre", "ApellidoP", "ApellidoM", "Direccion", "Telefono", CiTextBox.Text, NombreTextBox.Text, ApellidoPaternoTextBox.Text, ApellidoMaternoTextBox.Text, DireccionTextBox.Text, TelefonoTextBox.Text);
+                    if (!customerExist)
+                    {
+                        try
+                        {
+                            m_dba.InsertIntoTable("Cliente", "Id", "Nombre", "ApellidoP", "ApellidoM", "Direccion", "Telefono", CiTextBox.Text, NombreTextBox.Text, ApellidoPaternoTextBox.Text, ApellidoMaternoTextBox.Text, DireccionTextBox.Text, TelefonoTextBox.Text);
+                        }
+                        catch (System.Data.SqlClient.SqlException)
+                        {
+                            
+                        }
+                    }                       
                     /*registrando prenda*/
                     try
                     {
@@ -78,7 +87,7 @@ namespace PrestamixC
                     Close();
                 }
                 else
-                    MessageBox.Show("Los campos -C.I.-,-Id Prenda- e -Id Empeño- deben ser numéricos");
+                    MessageBox.Show("Los campos -C.I.-,-Id Prenda-, -Id Empeño-, -Monto- y -Teléfono- deben ser numéricos");
             }
             else
                 MessageBox.Show("Los campos -C.I.-,-Id Prenda- e -Id Empeño- no pueden ser vacios");
